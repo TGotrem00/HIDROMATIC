@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HIDROMATIC - Mi perfil</title>
+
+    <link rel="stylesheet" href="perfil.css">
+</head>
+
+<body>
+
+    <main class="perfil-contenedor">
+
+        <section class="perfil-tarjeta">
+
+            <!-- =========================
+                 INFORMACIÓN DEL PERFIL
+                 ========================= -->
+
+            <header class="perfil-header">
+
+                <div class="perfil-icono">
+                    👤
+                </div>
+
+                <div class="perfil-identidad">
+
+                    <!-- USUARIO REGISTRADO -->
+
+                    <div id="usuario-registrado">
+
+                        <h1 id="nombre-usuario">
+                            Mi perfil
+                        </h1>
+
+                        <p id="correo-usuario">
+                            usuario@correo.com
+                        </p>
+
+                    </div>
+
+
+                    <!-- USUARIO INVITADO -->
+
+                    <div
+                        id="usuario-invitado"
+                        class="oculto"
+                    >
+
+                        <div class="botones-invitado">
+
+                            <button
+                                id="btn-iniciar-sesion"
+                                type="button"
+                            >
+                                INICIAR SESIÓN
+                            </button>
+
+                            <button
+                                id="btn-registrarse"
+                                type="button"
+                            >
+                                REGISTRARSE
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     USAR OFFLINE
+                     ========================= -->
+
+                <button
+                    id="btn-usar-offline"
+                    class="btn-usar-offline"
+                    type="button"
+                >
+
+                    📴 Usar offline
+
+                </button>
+
+            </header>
+
+
+            <!-- =========================
+                 CONTENIDO PRINCIPAL
+                 ========================= -->
+
+            <div class="perfil-contenido">
+
+
+                <!-- =========================
+                     REGISTRAR PLANTA
+                     ========================= -->
+
+                <button
+                    class="opcion-principal boton-registrar-planta"
+                    id="btn-registrar-planta"
+                    type="button"
+                >
+
+                    <span class="opcion-texto">
+
+                        <strong>
+                            REGISTRAR UNA PLANTA
+                        </strong>
+
+                        <small>
+                            Añade una nueva planta y configura sus necesidades.
+                        </small>
+
+                    </span>
+
+                    <span class="opcion-flecha">
+                        →
+                    </span>
+
+                </button>
+
+
+                <!-- =========================
+                     CATÁLOGO DE PLANTAS
+                     ========================= -->
+
+                <section
+                    id="seccion-plantas"
+                    class="seccion-plantas oculto"
+                >
+
+                    <div class="titulo-plantas">
+
+                        <h2>
+                            🌱 Mis plantas
+                        </h2>
+
+                        <p>
+                            Selecciona una planta para utilizarla con HIDROMATIC.
+                        </p>
+
+                    </div>
+
+
+                    <div
+                        id="catalogo-plantas"
+                        class="catalogo-plantas"
+                    >
+                    </div>
+
+
+                    <!-- =========================
+                         REVISAR COMPORTAMIENTO
+                         ========================= -->
+
+                    <button
+                        id="btn-revisar-comportamiento"
+                        class="btn-revisar-comportamiento"
+                        type="button"
+                    >
+
+                        📊 REVISAR COMPORTAMIENTO
+
+                    </button>
+
+                </section>
+
+
+                <!-- =========================
+                     PLANTA SELECCIONADA
+                     ========================= -->
+
+                <div
+                    id="seccion-planta"
+                    class="seccion-planta oculto"
+                >
+
+                    <!-- MI PLANTA -->
+
+                    <button
+                        class="opcion-principal"
+                        id="btn-mi-planta"
+                        type="button"
+                    >
+
+                        <span class="opcion-icono">
+                            🌱
+                        </span>
+
+                        <span class="opcion-texto">
+
+                            <strong id="nombre-planta">
+                                Mi planta
+                            </strong>
+
+                            <small>
+                                Accede a los modos de riego.
+                            </small>
+
+                        </span>
+
+                        <span class="opcion-flecha">
+                            →
+                        </span>
+
+                    </button>
+
+                </div>
+
+
+                <!-- =========================
+                     INFORMACIÓN INVITADO
+                     ========================= -->
+
+                <div
+                    id="mensaje-invitado"
+                    class="mensaje-invitado oculto"
+                >
+
+                    <span>
+                        👤
+                    </span>
+
+                    <p>
+                        Estás usando HIDROMATIC como invitado.
+                        Inicia sesión o regístrate para guardar tus plantas.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 BARRA INFERIOR
+                 ========================= -->
+
+            <footer class="perfil-barra-inferior">
+
+                <!-- ATENCIÓN AL CLIENTE -->
+
+                <button
+                    class="barra-opcion"
+                    id="btn-atencion"
+                    type="button"
+                >
+
+                    <span>
+                        💬
+                    </span>
+
+                    <span>
+                        Atención al cliente
+                    </span>
+
+                </button>
+
+
+                <!-- CERRAR SESIÓN -->
+
+                <button
+                    class="barra-opcion cerrar-sesion"
+                    id="btn-cerrar-sesion"
+                    type="button"
+                >
+
+                    <span>
+                        🚪
+                    </span>
+
+                    <span>
+                        Cerrar sesión
+                    </span>
+
+                </button>
+
+            </footer>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         JAVASCRIPT
+         ========================= -->
+
+    <script src="perfil.js"></script>
+
+</body>
+
+</html>

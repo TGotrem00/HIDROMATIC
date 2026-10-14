@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Conectar Regadera</title>
+
+    <link rel="stylesheet" href="wifi.css">
+</head>
+
+<body>
+
+    <main>
+
+        <h1>CONECTAR REGADERA</h1>
+
+        <p>Ingresa tu red Wi-Fi</p>
+
+        <form id="wifiForm">
+
+            <label for="nombreWifi">Nombre</label>
+
+            <input
+                type="text"
+                id="nombreWifi"
+                name="nombreWifi"
+                placeholder="Nombre de la red"
+                required
+            >
+
+            <label for="contrasenaWifi">Contraseña</label>
+
+            <input
+                type="password"
+                id="contrasenaWifi"
+                name="contrasenaWifi"
+                placeholder="Contraseña"
+                
+            >
+
+            <button
+                type="submit"
+                id="btnConectar"
+            >
+                CONECTAR REGADERA
+            </button>
+
+        </form>
+
+        <p id="mensaje"></p>
+
+    </main>
+
+    <script src="wifi.js"></script>
+
+</body>
+</html>
+

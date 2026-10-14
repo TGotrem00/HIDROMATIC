@@ -1,0 +1,204 @@
+/* =========================
+   ESTILOS GENERALES
+   ========================= */
+
+* {
+    box-sizing: border-box;
+    outline: none;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Arial, sans-serif;
+
+    background: #f4f7f2;
+    color: #1f2d24;
+}
+
+
+/* =========================
+   CONTENEDOR PRINCIPAL
+   ========================= */
+
+main {
+    width: min(450px, 90%);
+
+    background: #ffffff;
+
+    padding: 40px;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================
+   TITULO
+   ========================= */
+
+h1 {
+    margin: 0 0 10px;
+
+    text-align: center;
+
+    color: #315c3b;
+
+    font-size: 28px;
+}
+
+main > p {
+    margin: 0 0 30px;
+
+    text-align: center;
+
+    color: #657268;
+
+    font-size: 15px;
+}
+
+
+/* =========================
+   FORMULARIO
+   ========================= */
+
+form {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+/* =========================
+   ETIQUETAS
+   ========================= */
+
+label {
+    margin-top: 8px;
+
+    font-weight: bold;
+
+    color: #1f2d24;
+}
+
+
+/* =========================
+   CAMPOS
+   ========================= */
+
+input {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    border: 1px solid #dce4dc;
+
+    border-radius: 8px;
+
+    background: #f9fbf8;
+
+    color: #1f2d24;
+
+    font-size: 15px;
+
+    transition: 0.2s;
+}
+
+input::placeholder {
+    color: #9aa59d;
+}
+
+input:focus {
+    border-color: #315c3b;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 3px rgba(49, 92, 59, 0.10);
+}
+
+
+/* =========================
+   BOTON
+   ========================= */
+
+#btnConectar {
+    margin-top: 20px;
+
+    padding: 14px 20px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #315c3b;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s,
+        transform 0.1s,
+        opacity 0.2s;
+}
+
+#btnConectar:hover {
+    background: #264a2f;
+}
+
+#btnConectar:active {
+    transform: scale(0.98);
+}
+
+#btnConectar:disabled {
+    cursor: not-allowed;
+
+    opacity: 0.6;
+}
+
+
+/* =========================
+   MENSAJE
+   ========================= */
+
+#mensaje {
+    min-height: 20px;
+
+    margin-top: 20px;
+
+    text-align: center;
+
+    font-size: 14px;
+
+    color: #315c3b;
+}
+
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 600px) {
+
+    main {
+        padding: 30px 25px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+}

@@ -1,0 +1,790 @@
+/* ============================================================
+   HIDROMATIC - MODO MANUAL
+   ============================================================ */
+
+
+/* ============================================================
+   CONFIGURACIÓN GENERAL
+   ============================================================ */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff;
+
+    /* ========================================================
+       FONDO DE HOJAS
+
+       CAMBIA ESTA RUTA POR LA DE TU IMAGEN.
+
+       Ejemplo:
+       url("Assets/fondo de hojas.png")
+       ======================================================== */
+
+    background-image: url("Assets/fondo de hojas3.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+/* ============================================================
+   CAPA OSCURA SOBRE EL FONDO
+   ============================================================ */
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 25, 8, 0.20);
+
+    pointer-events: none;
+    z-index: -1;
+}
+
+
+/* ============================================================
+   NAVEGACIÓN SUPERIOR
+   ============================================================ */
+
+.navegacion {
+    position: relative;
+    z-index: 10;
+
+    width: 100%;
+    min-height: 95px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 15px 110px 15px 30px;
+
+    background: transparent;
+}
+
+
+/* ============================================================
+   BOTONES DE LOS MODOS
+   ============================================================ */
+
+.botones-modos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: clamp(20px, 5vw, 90px);
+
+    width: 100%;
+}
+
+.botones-modos button {
+    min-width: 300px;
+    height: 62px;
+
+    padding: 0 28px;
+
+    border: none;
+    border-radius: 40px;
+
+    background: #1f2b1c;
+    color: #ffffff;
+
+    cursor: pointer;
+
+    font-family:
+        "Sweet Apricot",
+        "Segoe Print",
+        "Comic Sans MS",
+        cursive;
+
+    font-size: 25px;
+    font-weight: 400;
+    letter-spacing: 1px;
+
+    white-space: nowrap;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.botones-modos button:hover {
+    background: #172117;
+    transform: translateY(-2px);
+}
+
+.botones-modos button.activo {
+    background: #1f2b1c;
+    color: #ffffff;
+}
+
+
+/* ============================================================
+   BOTÓN DE PERFIL
+   ============================================================ */
+
+.volver-perfil {
+    position: absolute;
+
+    right: 28px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 64px;
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #789561;
+    color: #ffffff;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 34px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.20);
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.volver-perfil:hover {
+    background: #94df66;
+    color: #1c2418;
+
+    transform: translateY(-50%) scale(1.06);
+
+    box-shadow:
+        0 7px 18px rgba(0, 0, 0, 0.25);
+}
+
+.volver-perfil:active {
+    transform: translateY(-50%) scale(0.96);
+}
+
+
+/* ============================================================
+   ENCABEZADO ORIGINAL
+   ============================================================ */
+
+header {
+    display: none;
+}
+
+
+/* ============================================================
+   CONTENIDO PRINCIPAL
+   ============================================================ */
+
+main {
+    width: 100%;
+    min-height: calc(100vh - 95px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 0 20px 70px;
+}
+
+
+/* ============================================================
+   TÍTULO GRANDE
+   ============================================================ */
+
+main::before {
+    content: "MODO 3:\A MANUAL";
+
+    display: block;
+    white-space: pre-line;
+
+    margin-top: 35px;
+
+    color: #94df66;
+
+    text-align: center;
+
+    font-family:
+        "Garet",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: clamp(55px, 5.4vw, 92px);
+    font-weight: 700;
+
+    line-height: 0.95;
+    letter-spacing: 2px;
+
+    text-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.20);
+}
+
+
+/* ============================================================
+   ESTADO Y CONEXIÓN
+
+   Se conservan en el HTML para el funcionamiento del ESP32.
+   ============================================================ */
+
+.estado,
+.conexion {
+    display: none;
+}
+
+
+/* ============================================================
+   TARJETA PRINCIPAL DEL MODO MANUAL
+   ============================================================ */
+
+.modo-manual {
+    width: min(640px, 90vw);
+    min-height: 480px;
+
+    margin-top: 55px;
+    padding: 50px 55px 45px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+    background: #789561;
+
+    border-radius: 40px;
+
+    box-shadow:
+        0 16px 35px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ============================================================
+   TÍTULO INTERNO
+   ============================================================ */
+
+.modo-manual h2 {
+    width: 100%;
+
+    margin: 0 0 20px;
+
+    color: #ffffff;
+
+    font-family:
+        "Sweet Apricot",
+        "Segoe Print",
+        "Comic Sans MS",
+        cursive;
+
+    font-size: 35px;
+    font-weight: 400;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+
+/* ============================================================
+   DESCRIPCIÓN
+   ============================================================ */
+
+.descripcion-manual {
+    max-width: 430px;
+
+    margin: 0 auto;
+
+    color: #ffffff;
+
+    font-family:
+        "Sweet Apricot",
+        "Segoe Print",
+        "Comic Sans MS",
+        cursive;
+
+    font-size: 25px;
+    line-height: 1.5;
+
+    text-align: center;
+}
+
+
+/* ============================================================
+   ÁREA DE CONTROL DE LA BOMBA
+   ============================================================ */
+
+.control-bomba {
+    width: 100%;
+
+    min-height: 225px;
+
+    margin-top: 35px;
+    padding: 35px 25px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 30px;
+
+    background: rgba(45, 67, 36, 0.32);
+
+    border-radius: 30px;
+}
+
+
+/* ============================================================
+   INDICADOR DE ESTADO
+   ============================================================ */
+
+.indicador {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 13px;
+
+    color: #ffffff;
+
+    font-family:
+        "Sweet Apricot",
+        "Segoe Print",
+        "Comic Sans MS",
+        cursive;
+
+    font-size: 25px;
+    font-weight: 400;
+
+    text-align: center;
+}
+
+
+/* ============================================================
+   PUNTO INDICADOR
+   ============================================================ */
+
+.punto {
+    flex: 0 0 auto;
+
+    width: 17px;
+    height: 17px;
+
+    border-radius: 50%;
+
+    background: #d5d5d5;
+
+    box-shadow:
+        0 0 8px rgba(0, 0, 0, 0.15);
+}
+
+
+/* ============================================================
+   BOTÓN DE ENCENDIDO Y APAGADO
+   ============================================================ */
+
+#btn-bomba {
+    width: min(100%, 350px);
+    min-height: 70px;
+
+    padding: 15px 25px;
+
+    border: none;
+    border-radius: 40px;
+
+    background: #1f2b1c;
+    color: #ffffff;
+
+    font-family:
+        "Sweet Apricot",
+        "Segoe Print",
+        "Comic Sans MS",
+        cursive;
+
+    font-size: 27px;
+    font-weight: 400;
+
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, 0.15);
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+#btn-bomba:hover:not(:disabled) {
+    background: #172117;
+    transform: translateY(-2px);
+}
+
+#btn-bomba:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+
+/* El botón sigue respetando el estado de conexión del ESP32 */
+
+#btn-bomba:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+
+    box-shadow: none;
+}
+
+
+/* ============================================================
+   PIE DE PÁGINA
+   ============================================================ */
+
+footer {
+    display: none;
+}
+
+
+/* ============================================================
+   HIDROMA
+
+   La apariencia de Hidroma se mantiene en hidroma.css.
+   ============================================================ */
+
+#hidroma-boton {
+    z-index: 1000;
+}
+
+
+/* ============================================================
+   RESPONSIVE: TABLETAS
+   ============================================================ */
+
+@media (max-width: 1100px) {
+
+    .botones-modos {
+        gap: 20px;
+    }
+
+    .botones-modos button {
+        min-width: 230px;
+        padding: 0 18px;
+        font-size: 22px;
+    }
+
+    .volver-perfil {
+        right: 20px;
+    }
+}
+
+
+/* ============================================================
+   RESPONSIVE: PANTALLAS MEDIANAS
+   ============================================================ */
+
+@media (max-width: 800px) {
+
+    .navegacion {
+        padding: 15px 90px 15px 15px;
+    }
+
+    .botones-modos {
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .botones-modos button {
+        min-width: 210px;
+        height: 58px;
+
+        font-size: 20px;
+    }
+
+    main::before {
+        margin-top: 25px;
+
+        font-size: clamp(48px, 10vw, 70px);
+    }
+
+    .modo-manual {
+        margin-top: 40px;
+        padding: 40px 30px 35px;
+    }
+
+    .control-bomba {
+        padding: 30px 20px;
+    }
+}
+
+
+/* ============================================================
+   RESPONSIVE: MÓVILES
+   ============================================================ */
+
+@media (max-width: 600px) {
+
+    .navegacion {
+        padding: 15px 80px 15px 12px;
+    }
+
+    .botones-modos {
+        width: 100%;
+    }
+
+    .botones-modos button {
+        min-width: 0;
+        width: 100%;
+        max-width: 330px;
+    }
+
+    .volver-perfil {
+        right: 12px;
+
+        width: 56px;
+        height: 56px;
+
+        font-size: 30px;
+    }
+
+    main {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    main::before {
+        font-size: 48px;
+    }
+
+    .modo-manual {
+        width: 94vw;
+        min-height: auto;
+
+        margin-top: 30px;
+        padding: 35px 22px 30px;
+
+        border-radius: 30px;
+    }
+
+    .modo-manual h2 {
+        font-size: 29px;
+    }
+
+    .descripcion-manual {
+        font-size: 22px;
+    }
+
+    .control-bomba {
+        min-height: 200px;
+
+        margin-top: 25px;
+        padding: 25px 15px;
+
+        border-radius: 24px;
+    }
+
+    .indicador {
+        gap: 10px;
+        font-size: 21px;
+    }
+
+    #btn-bomba {
+        min-height: 62px;
+        font-size: 23px;
+    }
+}
+
+/* ============================================================
+   TARJETA VERDE DE ESTADO Y CONEXIÓN DEL ESP32 - MODO M
+   Añadida al final para conservar intactas las reglas existentes.
+   ============================================================ */
+
+.tarjeta-estado-esp32 {
+    display: block;
+    position: relative;
+    z-index: 5;
+    width: min(100% - 36px, 920px);
+    box-sizing: border-box;
+    margin: 22px auto 28px;
+    padding: 24px 28px;
+    color: #1f2b1c;
+    background: linear-gradient(135deg, #789561 0%, #94ad78 100%);
+    border: 2px solid #94df66;
+    border-radius: 22px;
+    box-shadow: 0 8px 24px rgba(15, 35, 12, 0.22);
+}
+
+.cabecera-estado-esp32 {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.icono-estado-esp32 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 48px;
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: #263b24;
+    font-size: 25px;
+}
+
+.tarjeta-estado-esp32 h2 {
+    margin: 0 0 4px;
+    color: #1f2b1c;
+    font-size: 1.35rem;
+}
+
+.subtitulo-estado-esp32 {
+    margin: 0;
+    color: #263b24;
+    font-size: 0.95rem;
+}
+
+.datos-estado-esp32 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.datos-estado-esp32 p {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    min-width: 0;
+    margin: 0;
+    padding: 15px;
+    background: rgba(245, 255, 233, 0.34);
+    border: 1px solid rgba(38, 59, 36, 0.2);
+    border-radius: 14px;
+}
+
+.etiqueta-estado-esp32 {
+    color: #263b24;
+    font-size: 0.88rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.valor-estado-esp32 {
+    display: inline-block;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 6px 11px;
+    color: #f5ffe9;
+    background: #263b24;
+    border: 1px solid #94df66;
+    border-radius: 999px;
+    font-weight: 800;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.conexion-estado-esp32 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(38, 59, 36, 0.28);
+}
+
+.texto-conexion-esp32 {
+    color: #1f2b1c;
+    font-weight: 700;
+}
+
+/* Sobrescribe únicamente el aspecto del botón de conexión dentro de la tarjeta. */
+.tarjeta-estado-esp32 #btn-conectar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 11px 22px;
+    border-radius: 12px;
+    background: #263b24 !important;
+    color: #f5ffe9 !important;
+    border: 2px solid #94df66 !important;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.18s ease, background 0.18s ease;
+}
+
+.tarjeta-estado-esp32 #btn-conectar:hover:not(:disabled) {
+    background: #354f31 !important;
+    transform: translateY(-1px);
+}
+
+.tarjeta-estado-esp32 #btn-conectar:disabled {
+    cursor: wait;
+    opacity: 0.8;
+}
+
+@media (max-width: 600px) {
+    .tarjeta-estado-esp32 {
+        width: calc(100% - 28px);
+        padding: 19px;
+        margin: 18px auto 22px;
+    }
+
+    .datos-estado-esp32 {
+        grid-template-columns: 1fr;
+    }
+
+    .datos-estado-esp32 p {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .conexion-estado-esp32 {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .tarjeta-estado-esp32 #btn-conectar {
+        width: 100%;
+    }
+}
+

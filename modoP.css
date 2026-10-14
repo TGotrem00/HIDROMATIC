@@ -1,0 +1,1239 @@
+/* ============================================================
+   HIDROMATIC - MODO PROGRAMADO
+   modoP.css
+   ============================================================ */
+
+
+/* ============================================================
+   GENERAL
+   ============================================================ */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: #ffffff;
+
+
+    /*
+    ========================================================
+    FONDO DE HOJAS
+
+    PUEDES CAMBIAR ESTA IMAGEN POR LA QUE QUIERAS
+    ========================================================
+    */
+
+    background-image:
+        url("Assets/fondo de hojas3.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+}
+
+
+/* ============================================================
+   CAPA SOBRE EL FONDO
+   ============================================================ */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(0, 25, 8, 0.20);
+
+    pointer-events: none;
+
+    z-index: -1;
+
+}
+
+
+/* ============================================================
+   NAVEGACIÓN
+   ============================================================ */
+
+.navegacion {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: 95px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        15px 110px 15px 30px;
+
+    background: transparent;
+
+    z-index: 10;
+
+}
+
+
+/* ============================================================
+   BOTONES DE LOS MODOS
+   ============================================================ */
+
+.botones-modos {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: clamp(
+        20px,
+        5vw,
+        90px
+    );
+
+    width: 100%;
+
+}
+
+
+.botones-modos button {
+
+    min-width: 300px;
+
+    height: 62px;
+
+    padding:
+        0 28px;
+
+    border: none;
+
+    border-radius: 40px;
+
+    background:
+        #1f2b1c;
+
+    color: #ffffff;
+
+    cursor: pointer;
+
+    font-family:
+        "Sweet Apricot",
+        "Segoe Print",
+        "Comic Sans MS",
+        cursive;
+
+    font-size: 25px;
+
+    font-weight: 400;
+
+    letter-spacing: 1px;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+
+}
+
+
+/* ============================================================
+   ESTADO ACTIVO
+   ============================================================ */
+
+.botones-modos .activo {
+
+    background:
+        #1f2b1c;
+
+}
+
+
+.botones-modos button:hover {
+
+    background:
+        #172117;
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* ============================================================
+   BOTÓN PERFIL
+   ============================================================
+
+   Este era originalmente "VOLVER AL PERFIL".
+
+   Ahora funciona como un botón circular con el emoji
+   de usuario.
+
+   El HTML conserva el onclick original hacia perfil.html.
+   ============================================================ */
+
+.volver-perfil {
+
+    position: absolute;
+
+    right: 28px;
+
+    left: auto;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    width: 64px;
+
+    height: 64px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 0;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        #789561;
+
+    color: #ffffff;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 34px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 15px
+        rgba(0, 0, 0, 0.20);
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+
+.volver-perfil:hover {
+
+    background:
+        #94df66;
+
+    color:
+        #1c2418;
+
+    transform:
+        translateY(-50%)
+        scale(1.06);
+
+    box-shadow:
+        0 7px 18px
+        rgba(0, 0, 0, 0.25);
+
+}
+
+
+.volver-perfil:active {
+
+    transform:
+        translateY(-50%)
+        scale(0.96);
+
+}
+
+
+/* ============================================================
+   ENCABEZADO ORIGINAL
+   ============================================================ */
+
+header {
+
+    display: none;
+
+}
+
+
+/* ============================================================
+   CONTENIDO PRINCIPAL
+   ============================================================ */
+
+main {
+
+    width: 100%;
+
+    min-height:
+        calc(100vh - 95px);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    padding:
+        0 20px 70px;
+
+}
+
+
+/* ============================================================
+   TÍTULO GRANDE
+   ============================================================ */
+
+main::before {
+
+    content:
+        "MODO 1:\A PROGRAMADO";
+
+    white-space:
+        pre-line;
+
+    display: block;
+
+    margin-top: 35px;
+
+    color:
+        #94df66;
+
+    text-align:
+        center;
+
+    font-family:
+        "Garet",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:
+        clamp(
+            55px,
+            5.4vw,
+            92px
+        );
+
+    font-weight:
+        700;
+
+    line-height:
+        0.95;
+
+    letter-spacing:
+        2px;
+
+    text-shadow:
+        0 3px 8px
+        rgba(0, 0, 0, 0.20);
+
+}
+
+
+/* ============================================================
+   ELEMENTOS FUNCIONALES OCULTOS
+   ============================================================ */
+
+.estado,
+.conexion {
+
+    display: none;
+
+}
+
+
+/* ============================================================
+   TARJETA PRINCIPAL
+   ============================================================ */
+
+.modo-programado {
+
+    width:
+        min(
+            640px,
+            90vw
+        );
+
+    min-height:
+        555px;
+
+    margin-top:
+        55px;
+
+    padding:
+        50px 55px 35px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    text-align:
+        center;
+
+    background:
+        #789561;
+
+    border-radius:
+        40px;
+
+    box-shadow:
+        0 16px 35px
+        rgba(0, 0, 0, 0.25);
+
+}
+
+
+/* ============================================================
+   TÍTULO INTERNO
+   ============================================================ */
+
+.modo-programado h2 {
+
+    width: 100%;
+
+    margin:
+        0 0 38px;
+
+    color:
+        #ffffff;
+
+    font-family:
+        "Sweet Apricot",
+        "Segoe Print",
+        "Comic Sans MS",
+        cursive;
+
+    font-size: 0;
+
+    font-weight:
+        400;
+
+    letter-spacing:
+        2px;
+
+}
+
+
+.modo-programado h2::after {
+
+    content:
+        "ELIGE LA HORA";
+
+    font-family:
+        "Sweet Apricot",
+        "Segoe Print",
+        "Comic Sans MS",
+        cursive;
+
+    font-size:
+        35px;
+
+}
+
+
+/* ============================================================
+   TEXTO DESCRIPTIVO
+   ============================================================ */
+
+.modo-programado > p:not(#estado-programado) {
+
+    display:
+        none;
+
+}
+
+
+/* ============================================================
+   CAMPOS
+   ============================================================ */
+
+.campo {
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+}
+
+
+/* ============================================================
+   HORA
+   ============================================================ */
+
+.campo:first-of-type {
+
+    margin:
+        0;
+
+}
+
+
+.campo:first-of-type label {
+
+    display:
+        none;
+
+}
+
+
+.campo:first-of-type input {
+
+    width:
+        100%;
+
+    max-width:
+        400px;
+
+    height:
+        62px;
+
+    padding:
+        8px 25px;
+
+    border:
+        none;
+
+    outline:
+        none;
+
+    border-radius:
+        40px;
+
+    background:
+        #ffffff;
+
+    color:
+        #1f241d;
+
+    font-family:
+        "Sweet Apricot",
+        "Segoe Print",
+        "Comic Sans MS",
+        cursive;
+
+    font-size:
+        29px;
+
+    text-align:
+        center;
+
+    cursor:
+        pointer;
+
+    box-shadow:
+        0 3px 7px
+        rgba(0, 0, 0, 0.08);
+
+}
+
+
+.campo:first-of-type input::-webkit-calendar-picker-indicator {
+
+    opacity:
+        0.75;
+
+    cursor:
+        pointer;
+
+}
+
+
+/* ============================================================
+   TIEMPO DE RIEGO
+   ============================================================ */
+
+.campo:nth-of-type(2) {
+
+    margin-top:
+        38px;
+
+}
+
+
+.campo:nth-of-type(2) label {
+
+    display:
+        block;
+
+    margin-bottom:
+        20px;
+
+    color:
+        #ffffff;
+
+    font-family:
+        "Sweet Apricot",
+        "Segoe Print",
+        "Comic Sans MS",
+        cursive;
+
+    font-size:
+        31px;
+
+    font-weight:
+        400;
+
+    letter-spacing:
+        1px;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+.campo:nth-of-type(2) > div {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        15px;
+
+}
+
+
+/* ============================================================
+   SELECTOR DE SEGUNDOS
+   ============================================================ */
+
+#tiempo-riego-programado {
+
+    width:
+        82px;
+
+    height:
+        55px;
+
+    border:
+        none;
+
+    outline:
+        none;
+
+    border-radius:
+        35px;
+
+    background:
+        #ffffff;
+
+    color:
+        #171b15;
+
+    font-family:
+        "Sweet Apricot",
+        "Segoe Print",
+        "Comic Sans MS",
+        cursive;
+
+    font-size:
+        27px;
+
+    text-align:
+        center;
+
+}
+
+
+#tiempo-riego-programado::-webkit-inner-spin-button,
+#tiempo-riego-programado::-webkit-outer-spin-button {
+
+    opacity:
+        1;
+
+}
+
+
+/* ============================================================
+   TEXTO SEGUNDOS
+   ============================================================ */
+
+.campo:nth-of-type(2) span {
+
+    color:
+        #ffffff;
+
+    font-family:
+        "Sweet Apricot",
+        "Segoe Print",
+        "Comic Sans MS",
+        cursive;
+
+    font-size:
+        28px;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+/* ============================================================
+   BOTÓN PROGRAMAR
+   ============================================================ */
+
+#btn-programar {
+
+    min-width:
+        335px;
+
+    height:
+        70px;
+
+    margin-top:
+        42px;
+
+    padding:
+        0 35px;
+
+    border:
+        none;
+
+    outline:
+        none;
+
+    border-radius:
+        40px;
+
+    background:
+        #1f2b1c;
+
+    color:
+        #ffffff;
+
+    cursor:
+        pointer;
+
+    font-family:
+        "Sweet Apricot",
+        "Segoe Print",
+        "Comic Sans MS",
+        cursive;
+
+    font-size:
+        29px;
+
+    font-weight:
+        400;
+
+    letter-spacing:
+        2px;
+
+    text-transform:
+        uppercase;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+
+}
+
+
+#btn-programar:hover {
+
+    background:
+        #172117;
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* ============================================================
+   ESTADO DEL RIEGO
+   ============================================================ */
+
+#estado-programado {
+
+    margin-top:
+        30px;
+
+    padding:
+        0;
+
+    background:
+        transparent;
+
+    color:
+        #ffffff;
+
+    font-family:
+        "Sweet Apricot",
+        "Segoe Print",
+        "Comic Sans MS",
+        cursive;
+
+    font-size:
+        23px;
+
+    font-weight:
+        400;
+
+    letter-spacing:
+        2px;
+
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+footer {
+
+    display:
+        none;
+
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 1100px) {
+
+    .botones-modos {
+
+        gap:
+            20px;
+
+    }
+
+
+    .botones-modos button {
+
+        min-width:
+            245px;
+
+        padding:
+            0 20px;
+
+    }
+
+
+    .volver-perfil {
+
+        right:
+            20px;
+
+    }
+
+}
+
+
+@media (max-width: 800px) {
+
+    .navegacion {
+
+        padding:
+            15px 90px 15px 15px;
+
+    }
+
+
+    .botones-modos {
+
+        gap:
+            12px;
+
+        flex-wrap:
+            wrap;
+
+    }
+
+
+    .botones-modos button {
+
+        min-width:
+            210px;
+
+        height:
+            58px;
+
+    }
+
+
+    main::before {
+
+        margin-top:
+            25px;
+
+        font-size:
+            clamp(
+                48px,
+                10vw,
+                70px
+            );
+
+    }
+
+
+    .modo-programado {
+
+        margin-top:
+            40px;
+
+        padding:
+            40px 30px 30px;
+
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .navegacion {
+
+        padding:
+            15px 80px 15px 12px;
+
+    }
+
+
+    .botones-modos {
+
+        width:
+            100%;
+
+    }
+
+
+    .botones-modos button {
+
+        min-width:
+            0;
+
+        width:
+            100%;
+
+        max-width:
+            330px;
+
+    }
+
+
+    .volver-perfil {
+
+        right:
+            12px;
+
+        width:
+            56px;
+
+        height:
+            56px;
+
+        font-size:
+            30px;
+
+    }
+
+
+    main {
+
+        padding-left:
+            12px;
+
+        padding-right:
+            12px;
+
+    }
+
+
+    main::before {
+
+        font-size:
+            48px;
+
+    }
+
+
+    .modo-programado {
+
+        width:
+            94vw;
+
+        min-height:
+            auto;
+
+        margin-top:
+            30px;
+
+        padding:
+            35px 22px 30px;
+
+        border-radius:
+            30px;
+
+    }
+
+
+    .modo-programado h2::after {
+
+        font-size:
+            29px;
+
+    }
+
+
+    .campo:first-of-type input {
+
+        max-width:
+            100%;
+
+    }
+
+
+    .campo:nth-of-type(2) label {
+
+        font-size:
+            26px;
+
+    }
+
+
+    #btn-programar {
+
+        min-width:
+            0;
+
+        width:
+            100%;
+
+        font-size:
+            25px;
+
+    }
+
+
+    #estado-programado {
+
+        font-size:
+            19px;
+
+    }
+
+}
+
+
+/* ============================================================
+   TARJETA VERDE DE ESTADO Y CONEXIÓN DEL ESP32 - MODO D
+   Añadido al final para conservar intactas las reglas existentes.
+   ============================================================ */
+.tarjeta-estado-esp32 {
+    display: block;
+    position: relative;
+    z-index: 5;
+    width: min(100% - 36px, 920px);
+    box-sizing: border-box;
+    margin: 22px auto 28px;
+    padding: 24px 28px;
+    color: #1f2b1c;
+    background: linear-gradient(135deg, #789561 0%, #94ad78 100%);
+    border: 2px solid #94df66;
+    border-radius: 22px;
+    box-shadow: 0 8px 24px rgba(15, 35, 12, 0.22);
+}
+
+.cabecera-estado-esp32 {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.icono-estado-esp32 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 48px;
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: #263b24;
+    font-size: 25px;
+}
+
+.tarjeta-estado-esp32 h2 {
+    margin: 0 0 4px;
+    color: #1f2b1c;
+    font-size: 1.35rem;
+}
+
+.subtitulo-estado-esp32 {
+    margin: 0;
+    color: #263b24;
+    font-size: 0.95rem;
+}
+
+.datos-estado-esp32 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.datos-estado-esp32 p {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    min-width: 0;
+    margin: 0;
+    padding: 15px;
+    background: rgba(245, 255, 233, 0.34);
+    border: 1px solid rgba(38, 59, 36, 0.2);
+    border-radius: 14px;
+}
+
+.etiqueta-estado-esp32 {
+    color: #263b24;
+    font-size: 0.88rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.valor-estado-esp32 {
+    display: inline-block;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 6px 11px;
+    color: #f5ffe9;
+    background: #263b24;
+    border: 1px solid #94df66;
+    border-radius: 999px;
+    font-weight: 800;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.conexion-estado-esp32 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(38, 59, 36, 0.28);
+}
+
+.texto-conexion-esp32 {
+    color: #1f2b1c;
+    font-weight: 700;
+}
+
+#btn-conectar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 11px 22px;
+    border-radius: 12px;
+    background: #263b24 !important;
+    color: #f5ffe9 !important;
+    border: 2px solid #94df66 !important;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.18s ease, background 0.18s ease;
+}
+
+#btn-conectar:hover:not(:disabled) {
+    background: #354f31 !important;
+    transform: translateY(-1px);
+}
+
+#btn-conectar:disabled {
+    cursor: wait;
+    opacity: 0.8;
+}
+
+@media (max-width: 600px) {
+    .tarjeta-estado-esp32 {
+        width: calc(100% - 28px);
+        padding: 19px;
+        margin: 18px auto 22px;
+    }
+
+    .datos-estado-esp32 {
+        grid-template-columns: 1fr;
+    }
+
+    .datos-estado-esp32 p {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .conexion-estado-esp32 {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    #btn-conectar {
+        width: 100%;
+    }
+}
+

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>HIDROMATIC - Modo Detección</title>
+
+    <link
+        rel="stylesheet"
+        href="modoD.css"
+    >
+
+</head>
+
+<body>
+
+    <!-- =====================================================
+        NAVEGACIÓN
+        ===================================================== -->
+
+    <nav class="navegacion">
+
+        <button
+            type="button"
+            class="volver-perfil"
+            onclick="location.href='perfil.html'"
+            aria-label="Ir al perfil"
+            title="Ir al perfil"
+        >👤</button>
+
+        <div class="botones-modos">
+
+            <button
+                onclick="location.href='modoP.html'"
+            >
+                🕐 PROGRAMADO
+            </button>
+
+            <button
+                class="activo"
+                onclick="location.href='modoD.html'"
+            >
+                🌱 DETECCIÓN
+            </button>
+
+            <button
+                onclick="location.href='modoM.html'"
+            >
+                🖱️ MANUAL
+            </button>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =====================================================
+        ENCABEZADO
+        ===================================================== -->
+
+    <header>
+        <h1>MODO 2:<br> DETECCIÓN</h1>
+    </header>
+
+
+    <main>
+
+        <!-- =================================================
+            TARJETA DE ESTADO Y CONEXIÓN DEL ESP32
+            Se reutilizan los IDs originales para conservar puente.js.
+            ================================================= -->
+
+        <section class="tarjeta-estado-esp32">
+
+            <div class="cabecera-estado-esp32">
+                <span class="icono-estado-esp32" aria-hidden="true">🌿</span>
+                <div>
+                    <h2>Estado del ESP32</h2>
+                    <p class="subtitulo-estado-esp32">Conexión y funcionamiento del sistema</p>
+                </div>
+            </div>
+
+            <div class="datos-estado-esp32">
+                <p>
+                    <span class="etiqueta-estado-esp32">ESP32</span>
+                    <span id="estado-esp32" class="valor-estado-esp32">
+                        Desconectado
+                    </span>
+                </p>
+
+                <p>
+                    <span class="etiqueta-estado-esp32">Bomba</span>
+                    <span id="estado-bomba" class="valor-estado-esp32">
+                        Apagada
+                    </span>
+                </p>
+
+                <p>
+                    <span class="etiqueta-estado-esp32">Humedad</span>
+                    <span id="humedad-general" class="valor-estado-esp32">
+                        --%
+                    </span>
+                </p>
+            </div>
+
+            <div class="conexion-estado-esp32">
+                <span class="texto-conexion-esp32">¿Listo para conectar tu regadera?</span>
+                <button id="btn-conectar" type="button">
+                    Conectar ESP32
+                </button>
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             MODO DETECCIÓN
+             ================================================= -->
+
+                <section class="modo-deteccion">
+            <div class="panel-humedad">
+                <h2 class="titulo-panel">NIVEL DE HUMEDAD</h2>
+
+                <div class="medidor-container">
+                    <svg
+                        version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="svg-definiciones"
+                        aria-hidden="true"
+                    >
+                        <symbol id="wave">
+                            <path d="M420,20c21.5-0.4,38.8-2.5,51.1-4.5c13.4-2.2,26.5-5.2,27.3-5.4C514,6.5,518,4.7,528.5,2.7c7.1-1.3,17.9-2.8,31.5-2.7c0,0,0,0,0,0v20H420z"></path>
+                            <path d="M420,20c-21.5-0.4-38.8-2.5-51.1-4.5c-13.4-2.2-26.5-5.2-27.3-5.4C326,6.5,322,4.7,311.5,2.7C304.3,1.4,293.6-0.1,280,0c0,0,0,0,0,0v20H420z"></path>
+                            <path d="M140,20c21.5,0.4,38.8-2.5,51.1-4.5c13.4-2.2,26.5-5.2,27.3-5.4C234,6.5,238,4.7,248.5,2.7c7.1-1.3,17.9-2.8,31.5-2.7c0,0,0,0,0,0v20H140z"></path>
+                            <path d="M140,20c-21.5-0.4,-38.8-2.5,-51.1-4.5c-13.4-2.2-26.5-5.2-27.3-5.4C46,6.5,42,4.7,31.5,2.7C24.3,1.4,13.6-0.1,0,0c0,0,0,0,0,0l0,20H140z"></path>
+                        </symbol>
+                    </svg>
+
+                    <div class="box">
+                        <div class="percent">
+                            <div class="percentNum" id="count">--</div>
+                            <div class="percentB">%</div>
+                        </div>
+                        <div id="water" class="water">
+                            <svg viewBox="0 0 560 20" class="water_wave water_wave_back" aria-hidden="true">
+                                <use href="#wave"></use>
+                            </svg>
+                            <svg viewBox="0 0 560 20" class="water_wave water_wave_front" aria-hidden="true">
+                                <use href="#wave"></use>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="informacion-sensor">
+                    <p id="estado-humedad">INTRODUZCA EL SENSOR EN LA TIERRA</p>
+                    <p class="raw">RAW: <span id="humedad-raw">--</span></p>
+                </div>
+            </div>
+
+            <div class="panel-controles">
+                <div class="campo">
+                    <label for="humedad-minima">ELIGE LA HUMEDAD MÍNIMA</label>
+                    <div class="entrada">
+                        <input type="number" id="humedad-minima" min="0" max="100" value="40">
+                        <span>%</span>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label for="tiempo-riego">ELIGE EL TIEMPO DE RIEGO</label>
+                    <div class="entrada">
+                        <input type="number" id="tiempo-riego" min="1" max="10" value="5">
+                        <span>SEGUNDOS</span>
+                    </div>
+                </div>
+
+                <button id="btn-deteccion" class="boton-deteccion" type="button">
+                    ACTIVAR DETECCIÓN
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            Proyecto de Regadera Automática
+        </p>
+
+    </footer>
+
+
+    <script src="puente.js"></script>
+
+        <!-- HIDROMA -->
+
+    <button id="hidroma-boton" aria-label="Abrir Hidroma">
+        💬
+    </button>
+
+    <div id="hidroma-ventana">
+
+    <!-- CABECERA -->
+
+    <div id="hidroma-cabecera">
+
+        <div>
+            <h2 id="hidroma-nombre">
+                Hidroma
+            </h2>
+
+            <p id="hidroma-subtitulo">
+                Asistente de Hidromatic
+            </p>
+        </div>
+
+        <button
+            id="hidroma-cerrar"
+            type="button"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <!-- NAVEGACIÓN -->
+
+    <div id="hidroma-navegacion">
+
+        <button
+            id="hidroma-chat-btn"
+            type="button"
+            class="hidroma-nav-activo"
+        >
+            💬 Chat
+        </button>
+
+        <button
+            id="hidroma-archivo-btn"
+            type="button"
+        >
+            📁 Archivo
+        </button>
+
+    </div>
+
+
+    <!-- VISTA DEL CHAT -->
+
+    <div id="hidroma-chat">
+
+        <div id="hidroma-mensajes">
+
+            <!-- Los mensajes se cargarán mediante JavaScript -->
+
+        </div>
+
+
+        <form id="hidroma-form">
+
+            <input
+                type="text"
+                id="hidroma-input"
+                placeholder="Escribe un mensaje..."
+                autocomplete="off"
+            >
+
+            <button
+                type="submit"
+                id="hidroma-enviar"
+            >
+                ➤
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- VISTA DEL ARCHIVO -->
+
+    <div id="hidroma-archivo">
+
+        <div id="hidroma-archivo-cabecera">
+
+            <button
+                id="hidroma-volver-chat"
+                type="button"
+            >
+                ←
+            </button>
+
+            <h3>
+                Archivo de conversaciones
+            </h3>
+
+        </div>
+
+
+        <div id="hidroma-lista-conversaciones">
+
+            <!--
+                Las conversaciones aparecerán
+                aquí mediante JavaScript.
+            -->
+
+        </div>
+
+    </div>
+
+    </div>
+
+    <link rel="stylesheet" href="hidroma.css">
+    <script src="hidroma.js"></script>
+
+
+
+</body>
+
+</html>

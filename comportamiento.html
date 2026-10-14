@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HIDROMATIC - Comportamiento</title>
+
+    <link rel="stylesheet" href="comportamiento.css">
+</head>
+
+<body>
+
+    <main class="comportamiento-contenedor">
+
+        <section class="comportamiento-tarjeta">
+
+            <!-- ENCABEZADO -->
+
+            <header class="comportamiento-header">
+
+                <button
+                    id="btn-volver-perfil"
+                    class="btn-volver"
+                    type="button"
+                >
+                    ← VOLVER AL PERFIL
+                </button>
+
+                <div class="titulo-planta">
+
+                    <div class="icono-planta">
+                        🌱
+                    </div>
+
+                    <div>
+
+                        <h1 id="nombre-planta">
+                            Mi planta
+                        </h1>
+
+                        <p id="tipo-planta">
+                            Tipo de planta
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- INFORMACIÓN GENERAL -->
+
+            <section class="informacion-general">
+
+                <div class="tarjeta-dato">
+
+                    <div class="dato-icono">
+                        💧
+                    </div>
+
+                    <div class="dato-contenido">
+
+                        <span class="dato-valor" id="humedad-actual">
+                            --%
+                        </span>
+
+                        <span class="dato-titulo">
+                            Humedad actual
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="tarjeta-dato">
+
+                    <div class="dato-icono">
+                        🎯
+                    </div>
+
+                    <div class="dato-contenido">
+
+                        <span class="dato-valor" id="humedad-minima">
+                            --%
+                        </span>
+
+                        <span class="dato-titulo">
+                            Humedad mínima
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="tarjeta-dato">
+
+                    <div class="dato-icono">
+                        ⏱️
+                    </div>
+
+                    <div class="dato-contenido">
+
+                        <span class="dato-valor" id="tiempo-riego">
+                            -- seg
+                        </span>
+
+                        <span class="dato-titulo">
+                            Tiempo de riego
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ESTADO DE LA PLANTA -->
+
+            <section class="estado-planta">
+
+                <div class="estado-icono" id="estado-icono">
+                    🌱
+                </div>
+
+                <div class="estado-contenido">
+
+                    <h2>Estado de la planta</h2>
+
+                    <p id="estado-planta">
+                        Esperando información...
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- HISTORIAL DE HUMEDAD -->
+
+            <section class="seccion-historial">
+
+                <div class="titulo-seccion">
+
+                    <span class="titulo-icono">
+                        📈
+                    </span>
+
+                    <div>
+
+                        <h2>
+                            HISTORIAL DE HUMEDAD
+                        </h2>
+
+                        <p>
+                            Evolución de la humedad de tu planta.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FILTROS DE HUMEDAD -->
+
+                <div class="filtros-historial">
+
+                    <button
+                        class="filtro-historial activo"
+                        data-filtro-humedad="diario"
+                        type="button"
+                    >
+                        DIARIO
+                    </button>
+
+                    <button
+                        class="filtro-historial"
+                        data-filtro-humedad="semanal"
+                        type="button"
+                    >
+                        SEMANAL
+                    </button>
+
+                    <button
+                        class="filtro-historial"
+                        data-filtro-humedad="mensual"
+                        type="button"
+                    >
+                        MENSUAL
+                    </button>
+
+                </div>
+
+
+                <div class="grafica-contenedor">
+
+                    <div
+                        class="grafica"
+                        id="grafica-humedad"
+                    >
+
+                        <div class="grafica-mensaje">
+
+                            <span>📊</span>
+
+                            <p>
+                                Aún no hay suficientes datos
+                                para mostrar el historial.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ACTIVIDAD DE RIEGO -->
+
+            <section class="seccion-riego">
+
+                <div class="titulo-seccion">
+
+                    <span class="titulo-icono">
+                        💦
+                    </span>
+
+                    <div>
+
+                        <h2>
+                            ACTIVIDAD DE RIEGO
+                        </h2>
+
+                        <p>
+                            Información sobre los riegos realizados.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="estadisticas-riego">
+
+                    <div class="estadistica">
+
+                        <span class="estadistica-icono">
+                            💧
+                        </span>
+
+                        <div>
+
+                            <span
+                                class="estadistica-valor"
+                                id="cantidad-riegos"
+                            >
+                                0
+                            </span>
+
+                            <span class="estadistica-titulo">
+                                Riegos realizados
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="estadistica">
+
+                        <span class="estadistica-icono">
+                            🕐
+                        </span>
+
+                        <div>
+
+                            <span
+                                class="estadistica-valor"
+                                id="ultimo-riego"
+                            >
+                                --:--
+                            </span>
+
+                            <span class="estadistica-titulo">
+                                Último riego
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- HISTORIAL DE RIEGOS -->
+
+                <div class="historial-riegos">
+
+                    <div class="subtitulo-historial">
+
+                        <div>
+
+                            <h3>
+                                HISTORIAL DE RIEGOS
+                            </h3>
+
+                            <p>
+                                Registro de los riegos realizados.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- FILTROS DE RIEGO -->
+
+                    <div class="filtros-historial">
+
+                        <button
+                            class="filtro-riego activo"
+                            data-filtro-riego="diario"
+                            type="button"
+                        >
+                            DIARIO
+                        </button>
+
+                        <button
+                            class="filtro-riego"
+                            data-filtro-riego="semanal"
+                            type="button"
+                        >
+                            SEMANAL
+                        </button>
+
+                        <button
+                            class="filtro-riego"
+                            data-filtro-riego="mensual"
+                            type="button"
+                        >
+                            MENSUAL
+                        </button>
+
+                    </div>
+
+
+                    <div class="grafica-contenedor">
+
+                        <div
+                            class="grafica grafica-riegos"
+                            id="grafica-riegos"
+                        >
+
+                            <div class="grafica-mensaje">
+
+                                <span>💦</span>
+
+                                <p>
+                                    Aún no hay riegos registrados
+                                    para mostrar.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- MENSAJE -->
+
+            <div
+                id="mensaje-comportamiento"
+                class="mensaje-comportamiento oculto"
+            >
+
+                <span>ℹ️</span>
+
+                <p>
+                    Selecciona una planta desde tu perfil
+                    para consultar su comportamiento.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="comportamiento.js"></script>
+
+</body>
+
+</html>

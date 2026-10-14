@@ -1,0 +1,738 @@
+/* ============================================================
+   HIDROMATIC - MODO 2: DETECCIÓN
+   Diseño basado en la referencia visual del usuario.
+   ============================================================ */
+
+:root {
+    --verde-lima: #94df66;
+    --verde-tarjeta: #789561;
+    --verde-oscuro: #1f2b1c;
+    --azul-circulo: #020438;
+    --azul-agua: #4D6DE3;
+    --azul-onda: #C7EEFF;
+}
+
+* {
+    box-sizing: border-box;
+    outline: none;
+}
+
+html {
+    min-height: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    position: relative;
+    isolation: isolate;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+
+    /* CAMBIA ESTA RUTA POR LA UBICACIÓN DE TU IMAGEN DE FONDO */
+    background-image: url("Assets/fondo de hojas3.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: rgba(0, 25, 8, 0.28);
+    pointer-events: none;
+}
+
+/* ============================================================
+   NAVEGACIÓN SUPERIOR — IGUAL A MODO M / MODO P
+   ============================================================ */
+
+.navegacion {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    min-height: 95px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 110px 15px 30px;
+    background: transparent;
+}
+
+.botones-modos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(20px, 5vw, 90px);
+    width: 100%;
+}
+
+.botones-modos button {
+    min-width: 300px;
+    height: 62px;
+    padding: 0 28px;
+    border: none;
+    border-radius: 40px;
+    background: #1f2b1c;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: "Sweet Apricot", "Segoe Print", "Comic Sans MS", cursive;
+    font-size: 25px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.botones-modos button:hover {
+    background: #172117;
+    transform: translateY(-2px);
+}
+
+.botones-modos button.activo {
+    background: #1f2b1c;
+    color: #ffffff;
+}
+
+.volver-perfil {
+    position: absolute;
+    right: 28px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: #789561;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 34px;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.20);
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.volver-perfil:hover {
+    background: #94df66;
+    color: #1c2418;
+    transform: translateY(-50%) scale(1.06);
+    box-shadow: 0 7px 18px rgba(0, 0, 0, 0.25);
+}
+
+.volver-perfil:active {
+    transform: translateY(-50%) scale(0.96);
+}
+
+
+/* -------------------- Título principal -------------------- */
+
+header {
+    text-align: center;
+    padding: 28px 20px 8px;
+}
+
+header h1 {
+    margin: 0;
+    color: var(--verde-lima);
+    font-family: "Garet", Arial, Helvetica, sans-serif;
+    font-size: clamp(44px, 5.5vw, 78px);
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-shadow: 0 3px 14px rgba(0, 0, 0, 0.25);
+}
+
+/* -------------------- Contenedor principal -------------------- */
+
+main {
+    width: min(1120px, 92%);
+    margin: 8px auto 42px;
+}
+
+/* Estos elementos se mantienen en el HTML para puente.js */
+.estado,
+.conexion {
+    display: none;
+}
+
+/* Tarjeta ancha de dos columnas como en la referencia */
+
+.modo-deteccion {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: stretch;
+    gap: 28px;
+    width: 100%;
+    min-height: 540px;
+    margin: 0 auto;
+    padding: 42px 38px 34px;
+    border: none;
+    border-radius: 42px;
+    background: rgba(120, 149, 97, 0.97);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+}
+
+.panel-humedad,
+.panel-controles {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.titulo-panel,
+.panel-controles label {
+    margin: 18px 0 22px;
+    color: #ffffff;
+    font-family: "Sweet Apricot", "Segoe Print", "Comic Sans MS", cursive;
+    font-size: clamp(17px, 1.8vw, 25px);
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 0 2px 7px rgba(0, 0, 0, 0.22);
+}
+
+
+/* Tipografía manuscrita compartida con Modo M y Modo P */
+.titulo-panel,
+.panel-controles label,
+#estado-humedad,
+.raw,
+.entrada,
+.boton-deteccion {
+    font-family: "Sweet Apricot", "Segoe Print", "Comic Sans MS", cursive;
+}
+
+/* -------------------- Medidor circular de humedad -------------------- */
+
+.medidor-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    min-height: 285px;
+    margin: 0 auto;
+}
+
+.svg-definiciones {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.box {
+    position: relative;
+    flex: 0 0 auto;
+    width: clamp(210px, 20vw, 280px);
+    height: clamp(210px, 20vw, 280px);
+    overflow: hidden;
+    border: none;
+    border-radius: 50%;
+    background: var(--azul-circulo);
+    box-shadow: none;
+}
+
+.box .percent {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: #ffffff;
+    font-family: "Sweet Apricot", "Segoe Print", "Comic Sans MS", cursive;
+    font-size: clamp(32px, 3vw, 48px);
+    font-weight: 500;
+    letter-spacing: 2px;
+    pointer-events: none;
+}
+
+.percentNum {
+    font-weight: 500;
+}
+
+.percentB {
+    margin-left: 4px;
+}
+
+.box .water {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    transform: translate(0, 100%);
+    background: var(--azul-agua);
+    transition: transform 0.3s ease;
+}
+
+.box .water .water_wave {
+    position: absolute;
+    bottom: 100%;
+    width: 200%;
+    height: 20px;
+}
+
+.box .water .water_wave_back {
+    right: 0;
+    fill: var(--azul-onda);
+    animation: wave-back 1.4s infinite linear;
+}
+
+.box .water .water_wave_front {
+    left: 0;
+    margin-bottom: -1px;
+    fill: var(--azul-agua);
+    animation: wave-front 0.7s infinite linear;
+}
+
+@keyframes wave-front {
+    100% {
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes wave-back {
+    100% {
+        transform: translate(50%, 0);
+    }
+}
+
+/* Mensaje inferior izquierdo */
+
+.informacion-sensor {
+    margin: 22px 0 0;
+    text-align: center;
+}
+
+#estado-humedad {
+    margin: 0;
+    padding: 10px 0;
+    background: transparent;
+    color: #ffffff;
+    font-family: "Sweet Apricot", "Segoe Print", "Comic Sans MS", cursive;
+    font-size: clamp(13px, 1.4vw, 19px);
+    font-weight: 500;
+    letter-spacing: 2px;
+    line-height: 1.5;
+    text-transform: uppercase;
+    text-shadow: 0 2px 7px rgba(0, 0, 0, 0.2);
+}
+
+.raw {
+    margin: 6px 0 0;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 12px;
+}
+
+/* -------------------- Controles de la columna derecha -------------------- */
+
+.panel-controles {
+    justify-content: flex-start;
+    padding: 0 8px;
+}
+
+.panel-controles .campo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 26px;
+    padding: 0;
+    border: none;
+    background: transparent;
+}
+
+.panel-controles .campo label {
+    margin: 18px 0 0;
+}
+
+.entrada {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: #ffffff;
+    font-family: "Sweet Apricot", "Segoe Print", "Comic Sans MS", cursive;
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+
+.entrada input {
+    width: 76px;
+    height: 46px;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 28px;
+    background: #ffffff;
+    color: #1f242b;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.entrada input:focus {
+    outline: 2px solid var(--verde-lima);
+    outline-offset: 2px;
+}
+
+/* Botón oscuro en la parte inferior derecha */
+
+.boton-deteccion {
+    align-self: center;
+    min-width: 260px;
+    margin: auto auto 0;
+    padding: 20px 28px;
+    border: none;
+    border-radius: 30px;
+    background: var(--verde-oscuro);
+    color: #ffffff;
+    font-family: "Sweet Apricot", "Segoe Print", "Comic Sans MS", cursive;
+    font-size: clamp(16px, 1.6vw, 22px);
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.boton-deteccion:hover {
+    background: #344a2e;
+    transform: translateY(-2px);
+}
+
+.boton-deteccion:focus-visible,
+.navegacion button:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 3px;
+}
+
+/* -------------------- Pie de página -------------------- */
+
+footer {
+    padding: 22px 18px 30px;
+    color: #ffffff;
+    text-align: center;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* Hidroma mantiene su diseño desde hidroma.css */
+
+#hidroma-boton {
+    z-index: 1000;
+}
+
+/* -------------------- Adaptación a tablet -------------------- */
+
+@media (max-width: 1100px) {
+    .botones-modos {
+        gap: 20px;
+    }
+
+    .botones-modos button {
+        min-width: 230px;
+        padding: 0 18px;
+        font-size: 22px;
+    }
+
+    .volver-perfil {
+        right: 20px;
+    }
+
+    .modo-deteccion {
+        gap: 18px;
+        padding: 32px 24px;
+    }
+
+    .box {
+        width: 220px;
+        height: 220px;
+    }
+}
+
+@media (max-width: 800px) {
+    .navegacion {
+        padding: 15px 90px 15px 15px;
+    }
+
+    .botones-modos {
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .botones-modos button {
+        min-width: 210px;
+        height: 58px;
+        font-size: 20px;
+    }
+}
+
+/* -------------------- Adaptación a celular -------------------- */
+
+@media (max-width: 650px) {
+    body {
+        background-attachment: scroll;
+    }
+
+    .navegacion {
+        min-height: auto;
+        padding: 15px 80px 15px 12px;
+    }
+
+    .botones-modos {
+        width: 100%;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .botones-modos button {
+        min-width: 0;
+        width: 100%;
+        max-width: 330px;
+        height: 52px;
+        padding: 0 12px;
+        font-size: 18px;
+        letter-spacing: 0;
+    }
+
+    .volver-perfil {
+        right: 12px;
+        width: 56px;
+        height: 56px;
+        font-size: 30px;
+    }
+
+    header {
+        padding: 26px 12px 18px;
+    }
+
+    header h1 {
+        font-size: clamp(36px, 9vw, 54px);
+        letter-spacing: 1px;
+    }
+
+    main {
+        width: 94%;
+        margin: 0 auto 30px;
+    }
+
+    .modo-deteccion {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        min-height: 0;
+        padding: 26px 18px;
+        border-radius: 28px;
+    }
+
+    .titulo-panel {
+        margin: 4px 0 14px;
+    }
+
+    .medidor-container {
+        min-height: 235px;
+    }
+
+    .box {
+        width: min(220px, 62vw);
+        height: min(220px, 62vw);
+    }
+
+    .informacion-sensor {
+        margin-top: 14px;
+    }
+
+    .panel-controles {
+        padding: 0;
+    }
+
+    .panel-controles .campo {
+        margin-bottom: 20px;
+    }
+
+    .panel-controles .campo label {
+        margin-top: 0;
+    }
+
+    .boton-deteccion {
+        width: 100%;
+        min-width: 0;
+        margin-top: 6px;
+        padding: 16px 18px;
+    }
+}
+
+/* ============================================================
+   TARJETA VERDE DE ESTADO Y CONEXIÓN DEL ESP32 - MODO D
+   Añadido al final para conservar intactas las reglas existentes.
+   ============================================================ */
+.tarjeta-estado-esp32 {
+    display: block;
+    position: relative;
+    z-index: 5;
+    width: min(100% - 36px, 920px);
+    box-sizing: border-box;
+    margin: 22px auto 28px;
+    padding: 24px 28px;
+    color: #1f2b1c;
+    background: linear-gradient(135deg, #789561 0%, #94ad78 100%);
+    border: 2px solid #94df66;
+    border-radius: 22px;
+    box-shadow: 0 8px 24px rgba(15, 35, 12, 0.22);
+}
+
+.cabecera-estado-esp32 {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.icono-estado-esp32 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 48px;
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: #263b24;
+    font-size: 25px;
+}
+
+.tarjeta-estado-esp32 h2 {
+    margin: 0 0 4px;
+    color: #1f2b1c;
+    font-size: 1.35rem;
+}
+
+.subtitulo-estado-esp32 {
+    margin: 0;
+    color: #263b24;
+    font-size: 0.95rem;
+}
+
+.datos-estado-esp32 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.datos-estado-esp32 p {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    min-width: 0;
+    margin: 0;
+    padding: 15px;
+    background: rgba(245, 255, 233, 0.34);
+    border: 1px solid rgba(38, 59, 36, 0.2);
+    border-radius: 14px;
+}
+
+.etiqueta-estado-esp32 {
+    color: #263b24;
+    font-size: 0.88rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.valor-estado-esp32 {
+    display: inline-block;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 6px 11px;
+    color: #f5ffe9;
+    background: #263b24;
+    border: 1px solid #94df66;
+    border-radius: 999px;
+    font-weight: 800;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.conexion-estado-esp32 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(38, 59, 36, 0.28);
+}
+
+.texto-conexion-esp32 {
+    color: #1f2b1c;
+    font-weight: 700;
+}
+
+#btn-conectar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 11px 22px;
+    border-radius: 12px;
+    background: #263b24 !important;
+    color: #f5ffe9 !important;
+    border: 2px solid #94df66 !important;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.18s ease, background 0.18s ease;
+}
+
+#btn-conectar:hover:not(:disabled) {
+    background: #354f31 !important;
+    transform: translateY(-1px);
+}
+
+#btn-conectar:disabled {
+    cursor: wait;
+    opacity: 0.8;
+}
+
+@media (max-width: 600px) {
+    .tarjeta-estado-esp32 {
+        width: calc(100% - 28px);
+        padding: 19px;
+        margin: 18px auto 22px;
+    }
+
+    .datos-estado-esp32 {
+        grid-template-columns: 1fr;
+    }
+
+    .datos-estado-esp32 p {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .conexion-estado-esp32 {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    #btn-conectar {
+        width: 100%;
+    }
+}
+

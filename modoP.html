@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIDROMATIC - Modo Programado</title>
+    <link rel="stylesheet" href="modoP.css">
+</head>
+
+<body>
+
+<nav class="navegacion">
+
+
+<button class="volver-perfil" onclick="location.href='perfil.html'">
+    👤
+</button>
+
+<div class="botones-modos">
+
+    <button class="activo" onclick="location.href='modoP.html'">
+        🕐 PROGRAMADO
+    </button>
+
+    <button onclick="location.href='modoD.html'">
+        🌱 DETECCIÓN
+    </button>
+
+    <button onclick="location.href='modoM.html'">
+        🖱️ MANUAL
+    </button>
+
+</div>
+
+
+</nav>
+
+<header>
+    <h1>🌱 HIDROMATIC</h1>
+    <p>
+        Sistema inteligente de riego
+        para plantas de interiores
+    </p>
+</header>
+
+<main>
+
+<!-- =================================================
+     TARJETA DE ESTADO Y CONEXIÓN DEL ESP32
+     Se reutilizan los IDs originales para conservar puente.js.
+     ================================================= -->
+
+<section class="tarjeta-estado-esp32">
+    <div class="cabecera-estado-esp32">
+        <span class="icono-estado-esp32" aria-hidden="true">🌿</span>
+        <div>
+            <h2>Estado de la regadera</h2>
+            <p class="subtitulo-estado-esp32">Conexión y funcionamiento del sistema</p>
+        </div>
+    </div>
+
+    <div class="datos-estado-esp32">
+        <p>
+            <span class="etiqueta-estado-esp32">ESP32</span>
+            <span id="estado-esp32" class="valor-estado-esp32">Desconectado</span>
+        </p>
+        <p>
+            <span class="etiqueta-estado-esp32">Bomba</span>
+            <span id="estado-bomba" class="valor-estado-esp32">Apagada</span>
+        </p>
+        <p>
+            <span class="etiqueta-estado-esp32">Humedad</span>
+            <span id="humedad-general" class="valor-estado-esp32">--%</span>
+        </p>
+    </div>
+
+    <div class="conexion-estado-esp32">
+        <span class="texto-conexion-esp32">¿Listo para conectar tu regadera?</span>
+        <button id="btn-conectar" type="button">Conectar ESP32</button>
+    </div>
+</section>
+
+<section class="modo-programado">
+
+
+<h2>🕐 Modo programado</h2>
+
+<p>
+    Programa una hora para activar automáticamente la regadera.
+</p>
+
+<div class="campo">
+
+    <label for="hora-riego">
+        Hora de riego:
+    </label>
+
+    <input type="time" id="hora-riego">
+
+</div>
+
+<div class="campo">
+
+    <label for="tiempo-riego-programado">
+        Tiempo de riego:
+    </label>
+
+    <div>
+
+        <input
+            type="number"
+            id="tiempo-riego-programado"
+            min="1"
+            max="10"
+            value="5"
+        >
+
+        <span>segundos</span>
+
+    </div>
+
+</div>
+
+<button id="btn-programar">
+    Programar riego
+</button>
+
+<p id="estado-programado">
+    Sin riego programado.
+</p>
+
+
+</section>
+
+</main>
+
+<!-- HIDROMA -->
+
+<button id="hidroma-boton" aria-label="Abrir Hidroma">
+    💬
+</button>
+
+<div id="hidroma-ventana">
+
+
+<div id="hidroma-cabecera">
+
+    <div>
+
+        <h2 id="hidroma-nombre">
+            Hidroma
+        </h2>
+
+        <p id="hidroma-subtitulo">
+            Asistente de Hidromatic
+        </p>
+
+    </div>
+
+    <button id="hidroma-cerrar" type="button">
+        ×
+    </button>
+
+</div>
+
+<div id="hidroma-navegacion">
+
+    <button
+        id="hidroma-chat-btn"
+        type="button"
+        class="hidroma-nav-activo"
+    >
+        💬 Chat
+    </button>
+
+    <button
+        id="hidroma-archivo-btn"
+        type="button"
+    >
+        📁 Archivo
+    </button>
+
+</div>
+
+<div id="hidroma-chat">
+
+    <div id="hidroma-mensajes"></div>
+
+    <form id="hidroma-form">
+
+        <input
+            type="text"
+            id="hidroma-input"
+            placeholder="Escribe un mensaje..."
+            autocomplete="off"
+        >
+
+        <button
+            type="submit"
+            id="hidroma-enviar"
+        >
+            ➤
+        </button>
+
+    </form>
+
+</div>
+
+<div id="hidroma-archivo">
+
+    <div id="hidroma-archivo-cabecera">
+
+        <button
+            id="hidroma-volver-chat"
+            type="button"
+        >
+            ←
+        </button>
+
+        <h3>
+            Archivo de conversaciones
+        </h3>
+
+    </div>
+
+    <div id="hidroma-lista-conversaciones"></div>
+
+</div>
+
+
+</div>
+
+<link rel="stylesheet" href="hidroma.css">
+
+<script src="hidroma.js"></script>
+
+<footer>
+
+
+<p>
+    Proyecto de Regadera Automática
+</p>
+
+
+</footer>
+
+<script src="puente.js"></script>
+
+</body>
+</html>
+

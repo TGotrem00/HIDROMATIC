@@ -1,0 +1,620 @@
+/* =========================================================
+   HIDROMATIC - REGISTRO DE PLANTA
+   Paleta compartida con Perfil y Modos de riego
+   ========================================================= */
+
+:root {
+    --verde-lima: #94df66;
+    --verde-tarjeta: #789561;
+    --verde-oscuro: #1c2418;
+    --verde-profundo: #1f2b1c;
+    --verde-boton: #315c3b;
+    --verde-hover: #344a2e;
+    --blanco: #ffffff;
+    --texto-oscuro: #1f2d24;
+    --sombra: 0 18px 45px rgba(0, 0, 0, 0.28);
+}
+
+/* -------------------- Configuración general -------------------- */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    min-height: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    position: relative;
+    isolation: isolate;
+    min-height: 100vh;
+    width: 100%;
+    padding: 38px 20px;
+    overflow-x: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--blanco);
+
+    /* =====================================================
+       FONDO PERSONALIZADO DE HIDROMATIC
+       Cambia esta ruta por la ubicación de TU imagen PNG.
+       Ejemplo: url("Assets/fondo de hojas3.png")
+       ===================================================== */
+    background-image: url("Assets/fondo de hojas2.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Capa sutil para que la tarjeta destaque sobre la imagen */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background: rgba(0, 25, 8, 0.28);
+    pointer-events: none;
+}
+
+/* -------------------- Contenedor principal -------------------- */
+
+.registro-planta-contenedor {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* -------------------- Tarjeta principal -------------------- */
+
+.registro-planta-tarjeta {
+    width: 100%;
+    overflow: hidden;
+    background: rgba(120, 149, 97, 0.97);
+    border: 2px solid rgba(148, 223, 102, 0.55);
+    border-radius: 38px;
+    box-shadow: var(--sombra);
+}
+
+/* -------------------- Barra superior -------------------- */
+
+.registro-planta-header {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding: 26px 34px;
+    background: var(--verde-oscuro);
+    color: var(--blanco);
+}
+
+.registro-planta-header > div {
+    min-width: 0;
+}
+
+.registro-planta-header h1 {
+    margin-bottom: 5px;
+    color: var(--verde-lima);
+    font-family: "Garet", Arial, Helvetica, sans-serif;
+    font-size: clamp(23px, 3vw, 34px);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.registro-planta-header p {
+    color: var(--blanco);
+    font-family: "Sweet Apricot", "Segoe Print", "Comic Sans MS", cursive;
+    font-size: 19px;
+    font-style: italic;
+    letter-spacing: 1px;
+}
+
+/* -------------------- Botón volver -------------------- */
+
+.btn-volver {
+    display: flex;
+    flex: 0 0 58px;
+    align-items: center;
+    justify-content: center;
+    width: 58px;
+    height: 58px;
+    border: 2px solid rgba(148, 223, 102, 0.65);
+    border-radius: 50%;
+    background: var(--verde-tarjeta);
+    color: var(--blanco);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 34px;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-volver:hover {
+    background: var(--verde-lima);
+    color: var(--verde-oscuro);
+    transform: translateX(-3px);
+}
+
+.btn-volver:active {
+    transform: scale(0.95);
+}
+
+/* -------------------- Contenido -------------------- */
+
+.registro-planta-contenido {
+    padding: 34px clamp(22px, 5vw, 58px) 42px;
+    background: rgba(120, 149, 97, 0.97);
+}
+
+.registro-planta-contenido h2 {
+    margin-bottom: 8px;
+    color: var(--blanco);
+    font-family: "Garet", Arial, Helvetica, sans-serif;
+    font-size: clamp(25px, 3vw, 34px);
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-align: center;
+    text-shadow: 0 2px 7px rgba(0, 0, 0, 0.2);
+}
+
+.descripcion {
+    max-width: 680px;
+    margin: 0 auto 30px;
+    color: rgba(255, 255, 255, 0.94);
+    font-family: "Sweet Apricot", "Segoe Print", "Comic Sans MS", cursive;
+    font-size: 17px;
+    font-style: italic;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* -------------------- Foto de la planta -------------------- */
+
+.seccion-foto {
+    margin-bottom: 28px;
+}
+
+.seccion-foto > label,
+.campo > label {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--blanco);
+    font-family: "Sweet Apricot", "Segoe Print", "Comic Sans MS", cursive;
+    font-size: 21px;
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.foto-contenedor {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    border: 2px dashed rgba(28, 36, 24, 0.6);
+    border-radius: 24px;
+    background: rgba(28, 36, 24, 0.2);
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.foto-contenedor:hover {
+    border-color: var(--verde-lima);
+    background: rgba(28, 36, 24, 0.28);
+}
+
+.foto-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 18px;
+    color: var(--blanco);
+    text-align: center;
+}
+
+.foto-icono {
+    margin-bottom: 3px;
+    font-size: 44px;
+}
+
+.foto-placeholder strong {
+    color: var(--verde-lima);
+    font-family: "Garet", Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.foto-placeholder small {
+    color: rgba(255, 255, 255, 0.88);
+    font-family: "Sweet Apricot", "Segoe Print", "Comic Sans MS", cursive;
+    font-size: 14px;
+    font-style: italic;
+}
+
+.vista-previa {
+    display: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* -------------------- Botones de fotografía -------------------- */
+
+.foto-botones {
+    display: flex;
+    gap: 14px;
+    margin-top: 13px;
+}
+
+.foto-botones input {
+    display: none;
+}
+
+.btn-foto {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    padding: 12px 18px;
+    border: 2px solid var(--verde-lima);
+    border-radius: 28px;
+    background: var(--verde-oscuro);
+    color: var(--blanco);
+    font-family: "Sweet Apricot", "Segoe Print", "Comic Sans MS", cursive;
+    font-size: 17px;
+    font-style: italic;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-foto:hover {
+    background: var(--verde-lima);
+    color: var(--verde-oscuro);
+    transform: translateY(-2px);
+}
+
+.btn-quitar-foto {
+    display: none;
+    width: 100%;
+    margin-top: 9px;
+    padding: 9px 12px;
+    border: none;
+    border-radius: 18px;
+    background: transparent;
+    color: #fff0e8;
+    font-family: "Sweet Apricot", "Segoe Print", "Comic Sans MS", cursive;
+    font-size: 15px;
+    cursor: pointer;
+    transition: color 0.2s ease, background 0.2s ease;
+}
+
+.btn-quitar-foto:hover {
+    background: rgba(28, 36, 24, 0.2);
+    color: var(--blanco);
+    text-decoration: underline;
+}
+
+/* -------------------- Campos del formulario -------------------- */
+
+.campo {
+    min-width: 0;
+    margin-bottom: 24px;
+}
+
+.campo input,
+.campo select {
+    display: block;
+    width: 100%;
+    min-height: 56px;
+    padding: 13px 20px;
+    border: 2px solid transparent;
+    border-radius: 30px;
+    outline: none;
+    background: var(--blanco);
+    color: var(--texto-oscuro);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.08), 0 3px 8px rgba(0, 0, 0, 0.08);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.campo select {
+    cursor: pointer;
+}
+
+.campo input:focus,
+.campo select:focus {
+    border-color: var(--verde-lima);
+    box-shadow: 0 0 0 4px rgba(148, 223, 102, 0.35);
+}
+
+.campo input::placeholder {
+    color: #8b9689;
+}
+
+/* Dos campos de configuración en paralelo */
+
+.fila-campos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.campo-unidad {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.campo-unidad input {
+    padding-right: 72px;
+}
+
+.campo-unidad span {
+    position: absolute;
+    right: 20px;
+    color: var(--verde-boton);
+    font-family: "Sweet Apricot", "Segoe Print", "Comic Sans MS", cursive;
+    font-size: 17px;
+    font-weight: 700;
+    pointer-events: none;
+}
+
+.ayuda {
+    display: block;
+    margin: 8px 6px 0;
+    color: rgba(255, 255, 255, 0.88);
+    font-family: "Sweet Apricot", "Segoe Print", "Comic Sans MS", cursive;
+    font-size: 13px;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+/* -------------------- Mensaje de error -------------------- */
+
+.mensaje-error {
+    min-height: 22px;
+    margin: 0 0 10px;
+    color: #fff0e8;
+    font-family: "Sweet Apricot", "Segoe Print", "Comic Sans MS", cursive;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.5;
+    text-align: center;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* -------------------- Botón registrar -------------------- */
+
+#btn-registrar-planta {
+    display: block;
+    width: min(380px, 100%);
+    min-height: 68px;
+    margin: 8px auto 0;
+    padding: 16px 28px;
+    border: 2px solid var(--verde-lima);
+    border-radius: 38px;
+    background: var(--verde-oscuro);
+    color: var(--blanco);
+    font-family: "Sweet Apricot", "Segoe Print", "Comic Sans MS", cursive;
+    font-size: 21px;
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 2px;
+    cursor: pointer;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#btn-registrar-planta:hover {
+    background: var(--verde-lima);
+    color: var(--verde-oscuro);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 23px rgba(0, 0, 0, 0.25);
+}
+
+#btn-registrar-planta:active {
+    transform: translateY(0) scale(0.99);
+}
+
+/* -------------------- Barra inferior -------------------- */
+
+.registro-planta-footer {
+    display: flex;
+    justify-content: center;
+    background: var(--verde-oscuro);
+}
+
+#btn-footer-volver {
+    width: 100%;
+    min-height: 62px;
+    padding: 14px 20px;
+    border: none;
+    background: transparent;
+    color: var(--blanco);
+    font-family: "Sweet Apricot", "Segoe Print", "Comic Sans MS", cursive;
+    font-size: 18px;
+    font-style: italic;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+#btn-footer-volver:hover {
+    background: var(--verde-profundo);
+    color: var(--verde-lima);
+}
+
+/* -------------------- Accesibilidad -------------------- */
+
+button:focus-visible,
+.btn-foto:focus-visible {
+    outline: 3px solid var(--blanco);
+    outline-offset: 3px;
+}
+
+/* -------------------- Tablet -------------------- */
+
+@media (max-width: 760px) {
+    body {
+        padding: 24px 14px;
+    }
+
+    .registro-planta-tarjeta {
+        border-radius: 30px;
+    }
+
+    .registro-planta-header {
+        gap: 16px;
+        padding: 22px 24px;
+    }
+
+    .btn-volver {
+        flex-basis: 52px;
+        width: 52px;
+        height: 52px;
+        font-size: 30px;
+    }
+
+    .registro-planta-contenido {
+        padding: 30px 28px 36px;
+    }
+
+    .fila-campos {
+        gap: 16px;
+    }
+}
+
+/* -------------------- Móvil -------------------- */
+
+@media (max-width: 560px) {
+    body {
+        padding: 14px 10px;
+        background-attachment: scroll;
+    }
+
+    .registro-planta-tarjeta {
+        border-radius: 25px;
+        border-width: 1px;
+    }
+
+    .registro-planta-header {
+        gap: 13px;
+        padding: 19px 17px;
+    }
+
+    .registro-planta-header h1 {
+        font-size: clamp(19px, 5vw, 25px);
+        letter-spacing: 0;
+    }
+
+    .registro-planta-header p {
+        font-size: 16px;
+    }
+
+    .btn-volver {
+        flex-basis: 45px;
+        width: 45px;
+        height: 45px;
+        font-size: 27px;
+    }
+
+    .registro-planta-contenido {
+        padding: 26px 19px 30px;
+    }
+
+    .registro-planta-contenido h2 {
+        font-size: 25px;
+    }
+
+    .descripcion {
+        margin-bottom: 24px;
+        font-size: 15px;
+    }
+
+    .seccion-foto > label,
+    .campo > label {
+        font-size: 19px;
+    }
+
+    .foto-contenedor {
+        height: 205px;
+        border-radius: 20px;
+    }
+
+    .foto-botones {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn-foto {
+        min-height: 48px;
+        font-size: 16px;
+    }
+
+    .fila-campos {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .campo {
+        margin-bottom: 21px;
+    }
+
+    .campo input,
+    .campo select {
+        min-height: 52px;
+        padding: 12px 17px;
+        font-size: 15px;
+    }
+
+    #btn-registrar-planta {
+        min-height: 60px;
+        font-size: 18px;
+        letter-spacing: 1px;
+    }
+
+    #btn-footer-volver {
+        min-height: 56px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 360px) {
+    .registro-planta-header {
+        padding: 16px 12px;
+    }
+
+    .registro-planta-contenido {
+        padding: 23px 14px 26px;
+    }
+
+    .foto-contenedor {
+        height: 175px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}

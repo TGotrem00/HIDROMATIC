@@ -1,0 +1,1600 @@
+/* =========================================================
+   HIDROMATIC - PERFIL
+   Diseño visual HIDROMATIC
+   ========================================================= */
+
+
+/* =========================================================
+   CONFIGURACIÓN GENERAL
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    /*
+    ========================================================
+    FONDO DE HOJAS
+
+    CAMBIA ESTA RUTA POR TU IMAGEN
+    ========================================================
+    */
+
+    background-image: url("Assets/fondo de hojas2.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   CAPA SOBRE EL FONDO
+   ========================================================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 25, 8, 0.25);
+
+    z-index: -1;
+}
+
+
+/* =========================================================
+   CONTENEDOR
+   ========================================================= */
+
+.perfil-contenedor {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    padding: 55px 25px 70px;
+}
+
+
+/* =========================================================
+   VENTANA PRINCIPAL
+   ========================================================= */
+
+.perfil-tarjeta {
+    width: min(1050px, 94vw);
+
+    min-height: 720px;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    background: #789561;
+
+    border-radius: 40px;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.30);
+}
+
+
+/* =========================================================
+   BARRA SUPERIOR
+   ========================================================= */
+
+.perfil-header {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 24px 32px;
+
+    background: #1c2418;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   ICONO DE PERFIL
+   ========================================================= */
+
+.perfil-icono {
+    width: 65px;
+    height: 65px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #789561;
+
+    color: #ffffff;
+
+    font-size: 30px;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.20);
+}
+
+
+/* =========================================================
+   IDENTIDAD
+   ========================================================= */
+
+.perfil-identidad {
+    flex: 1;
+
+    min-width: 0;
+}
+
+.perfil-header h1 {
+    margin-bottom: 5px;
+
+    color: #94df66;
+
+    font-family:
+        "Garet",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 29px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+.perfil-header p {
+    color: #ffffff;
+
+    font-family:
+        "Sweet Apricot",
+        "Segoe Print",
+        "Comic Sans MS",
+        cursive;
+
+    font-size: 17px;
+
+    font-style: italic;
+
+    opacity: 0.95;
+}
+
+
+/* =========================================================
+   BOTÓN USAR OFFLINE
+   ========================================================= */
+
+.btn-usar-offline {
+    flex-shrink: 0;
+
+    min-width: 145px;
+
+    padding: 13px 18px;
+
+    border: 2px solid #789561;
+
+    border-radius: 30px;
+
+    background: #789561;
+
+    color: #ffffff;
+
+    font-family:
+        "Sweet Apricot",
+        "Segoe Print",
+        "Comic Sans MS",
+        cursive;
+
+    font-size: 16px;
+
+    font-style: italic;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.15s ease,
+        box-shadow 0.2s ease;
+}
+
+.btn-usar-offline:hover {
+    background: #94a878;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.20);
+
+    transform: translateY(-2px);
+}
+
+.btn-usar-offline:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   BOTONES DE INVITADO
+   ========================================================= */
+
+.botones-invitado {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.botones-invitado button {
+    padding: 10px 16px;
+
+    border: 2px solid #789561;
+
+    border-radius: 25px;
+
+    background: #789561;
+
+    color: #ffffff;
+
+    font-family:
+        "Sweet Apricot",
+        "Segoe Print",
+        "Comic Sans MS",
+        cursive;
+
+    font-size: 14px;
+
+    font-style: italic;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.15s ease;
+}
+
+.botones-invitado button:hover {
+    background: #94a878;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   CONTENIDO PRINCIPAL
+   ========================================================= */
+
+.perfil-contenido {
+    flex: 1;
+
+    width: 100%;
+
+    min-height: 520px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 55px;
+
+    background: rgba(120, 149, 97, 0.88);
+}
+
+
+/* =========================================================
+   BOTÓN REGISTRAR PLANTA
+   ========================================================= */
+
+.boton-registrar-planta {
+    width: min(650px, 85%);
+
+    min-height: 150px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 25px;
+
+    padding: 30px 40px;
+
+    border: 3px solid #94df66;
+
+    border-radius: 35px;
+
+    background: rgba(28, 36, 24, 0.92);
+
+    color: #ffffff;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.25);
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.15s ease,
+        box-shadow 0.2s ease;
+}
+
+.boton-registrar-planta:hover {
+    background: #1c2418;
+
+    border-color: #b2ed8a;
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 16px 35px rgba(0, 0, 0, 0.30);
+}
+
+.boton-registrar-planta:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   TEXTO DEL BOTÓN REGISTRAR
+   ========================================================= */
+
+.boton-registrar-planta .opcion-texto {
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+}
+
+.boton-registrar-planta .opcion-texto strong {
+    color: #94df66;
+
+    font-family:
+        "Garet",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 24px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+.boton-registrar-planta .opcion-texto small {
+    color: #ffffff;
+
+    font-family:
+        "Sweet Apricot",
+        "Segoe Print",
+        "Comic Sans MS",
+        cursive;
+
+    font-size: 17px;
+
+    font-style: italic;
+
+    line-height: 1.4;
+}
+
+.boton-registrar-planta .opcion-flecha {
+    color: #94df66;
+
+    font-size: 38px;
+
+    font-weight: bold;
+
+    transition:
+        transform 0.2s ease;
+}
+
+.boton-registrar-planta:hover .opcion-flecha {
+    transform: translateX(6px);
+}
+
+
+/* =========================================================
+   SECCIÓN DE PLANTAS
+   ========================================================= */
+
+.seccion-plantas {
+    width: 100%;
+
+    max-width: 900px;
+
+    margin-top: 5px;
+}
+
+
+/* =========================================================
+   TÍTULO DE PLANTAS
+   ========================================================= */
+
+.titulo-plantas {
+    width: 100%;
+
+    margin-bottom: 28px;
+
+    text-align: center;
+}
+
+.titulo-plantas h2 {
+    margin-bottom: 7px;
+
+    color: #ffffff;
+
+    font-family:
+        "Garet",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 32px;
+
+    font-weight: 700;
+}
+
+.titulo-plantas p {
+    color: #ffffff;
+
+    font-family:
+        "Sweet Apricot",
+        "Segoe Print",
+        "Comic Sans MS",
+        cursive;
+
+    font-size: 18px;
+
+    font-style: italic;
+}
+
+
+/* =========================================================
+   CATÁLOGO
+   ========================================================= */
+
+.catalogo-plantas {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 22px;
+}
+
+
+/* =========================================================
+   TARJETA DE PLANTA
+   ========================================================= */
+
+.tarjeta-planta {
+    width: 100%;
+
+    overflow: hidden;
+
+    display: flex;
+
+    flex-direction: column;
+
+    border: 3px solid #1c2418;
+
+    border-radius: 28px;
+
+    background: #1c2418;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.28);
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.tarjeta-planta:hover {
+    border-color: #315c3b;
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 15px 32px rgba(0, 0, 0, 0.32);
+}
+
+
+/* =========================================================
+   FOTO DE LA PLANTA
+   ========================================================= */
+
+.tarjeta-planta-foto {
+    width: calc(100% - 18px);
+
+    height: 120px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    margin: 9px 9px 0;
+
+    border-radius: 16px;
+
+    background: #789561;
+
+    color: #315c3b;
+
+    font-size: 45px;
+}
+
+.tarjeta-planta-foto img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 16px;
+}
+
+
+/* =========================================================
+   INFORMACIÓN DE LA PLANTA
+   ========================================================= */
+
+.tarjeta-planta-informacion {
+    display: flex;
+
+    flex-direction: column;
+
+    padding: 8px 14px 12px;
+}
+
+.tarjeta-planta-informacion h3 {
+    margin-bottom: 2px;
+
+    color: #94df66;
+
+    font-family:
+        "Garet",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    word-break: break-word;
+}
+
+.tarjeta-planta-informacion > p {
+    margin-bottom: 8px;
+
+    color: #ffffff;
+
+    font-family:
+        "Sweet Apricot",
+        "Segoe Print",
+        "Comic Sans MS",
+        cursive;
+
+    font-size: 13px;
+
+    font-style: italic;
+}
+
+
+/* =========================================================
+   CONFIGURACIÓN DE LA PLANTA
+   ========================================================= */
+
+.tarjeta-planta-configuracion {
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-bottom: 9px;
+}
+
+.tarjeta-planta-configuracion span {
+    padding: 0;
+
+    border-radius: 0;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    font-family:
+        "Sweet Apricot",
+        "Segoe Print",
+        "Comic Sans MS",
+        cursive;
+
+    font-size: 14px;
+
+    font-weight: normal;
+
+    font-style: italic;
+}
+
+.tarjeta-planta-configuracion span:first-child {
+    color: #ffffff;
+}
+
+.tarjeta-planta-configuracion span:nth-child(2) {
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   BOTONES DE PLANTA
+   ========================================================= */
+
+.botones-planta {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: row;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+/* =========================================================
+   SELECCIONAR PLANTA
+   ========================================================= */
+
+.btn-seleccionar-planta {
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 9px 12px;
+
+    border: none;
+
+    border-radius: 18px;
+
+    background: #315c3b;
+
+    color: #ffffff;
+
+    font-family:
+        "Sweet Apricot",
+        "Segoe Print",
+        "Comic Sans MS",
+        cursive;
+
+    font-size: 12px;
+
+    font-style: italic;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.15s ease;
+}
+
+.btn-seleccionar-planta:hover {
+    background: #789561;
+
+    transform: translateY(-2px);
+}
+
+.btn-seleccionar-planta:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   ELIMINAR PLANTA
+   ========================================================= */
+
+.btn-eliminar-planta {
+    width: 42px;
+    height: 36px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 2px solid #b32626;
+
+    border-radius: 17px;
+
+    background: #b32626;
+
+    color: #ffffff;
+
+    font-size: 0;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.15s ease;
+}
+
+.btn-eliminar-planta::before {
+    content: "🗑";
+
+    font-family: Arial, sans-serif;
+
+    font-size: 18px;
+
+    line-height: 1;
+}
+
+.btn-eliminar-planta:hover {
+    background: #8c1d1d;
+
+    border-color: #8c1d1d;
+
+    color: #ffffff;
+
+    transform: translateY(-2px);
+}
+
+.btn-eliminar-planta:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   PLANTA SELECCIONADA
+   ========================================================= */
+
+.seccion-planta {
+    width: 100%;
+
+    max-width: 900px;
+
+    margin-top: 25px;
+
+    display: flex;
+
+    justify-content: center;
+}
+
+
+/* =========================================================
+   MI PLANTA
+   ========================================================= */
+
+#btn-mi-planta {
+    width: 100%;
+
+    min-height: 95px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 18px 25px;
+
+    border: 3px solid #94df66;
+
+    border-radius: 28px;
+
+    background: #1c2418;
+
+    color: #ffffff;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.22);
+
+    transition:
+        background 0.2s ease,
+        transform 0.15s ease,
+        box-shadow 0.2s ease;
+}
+
+#btn-mi-planta:hover {
+    background: #11160f;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 14px 30px rgba(0, 0, 0, 0.28);
+}
+
+#btn-mi-planta:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   ICONO DE MI PLANTA
+   ========================================================= */
+
+#btn-mi-planta .opcion-icono {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 18px;
+
+    background: #789561;
+
+    color: #ffffff;
+
+    font-size: 30px;
+}
+
+
+/* =========================================================
+   TEXTO DE MI PLANTA
+   ========================================================= */
+
+#btn-mi-planta .opcion-texto {
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+#btn-mi-planta .opcion-texto strong {
+    color: #94df66;
+
+    font-family:
+        "Garet",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 20px;
+}
+
+#btn-mi-planta .opcion-texto small {
+    color: #ffffff;
+
+    font-family:
+        "Sweet Apricot",
+        "Segoe Print",
+        "Comic Sans MS",
+        cursive;
+
+    font-size: 15px;
+
+    font-style: italic;
+}
+
+#btn-mi-planta .opcion-flecha {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #789561;
+
+    color: #ffffff;
+
+    font-size: 22px;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+#btn-mi-planta:hover .opcion-flecha {
+    background: #94df66;
+
+    color: #1c2418;
+
+    transform: translateX(4px);
+}
+
+
+/* =========================================================
+   BOTÓN REVISAR COMPORTAMIENTO
+   ========================================================= */
+
+.btn-revisar-comportamiento {
+    width: 100%;
+
+    min-height: 65px;
+
+    margin-top: 22px;
+
+    padding: 15px 20px;
+
+    border: 2px solid #94df66;
+
+    border-radius: 30px;
+
+    background: #1c2418;
+
+    color: #94df66;
+
+    font-family:
+        "Sweet Apricot",
+        "Segoe Print",
+        "Comic Sans MS",
+        cursive;
+
+    font-size: 19px;
+
+    font-style: italic;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.20);
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.15s ease;
+}
+
+.btn-revisar-comportamiento:hover {
+    background: #94df66;
+
+    color: #1c2418;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   SIN PLANTAS
+   ========================================================= */
+
+.sin-plantas {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 30px 20px;
+
+    border: 2px dashed rgba(255, 255, 255, 0.55);
+
+    border-radius: 25px;
+
+    background: rgba(28, 36, 24, 0.30);
+
+    color: #ffffff;
+
+    text-align: center;
+}
+
+.sin-plantas > span {
+    margin-bottom: 5px;
+
+    font-size: 40px;
+}
+
+.sin-plantas strong {
+    color: #ffffff;
+
+    font-family:
+        "Garet",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 17px;
+}
+
+.sin-plantas small {
+    color: #ffffff;
+
+    font-family:
+        "Sweet Apricot",
+        "Segoe Print",
+        "Comic Sans MS",
+        cursive;
+
+    font-size: 14px;
+
+    font-style: italic;
+}
+
+
+/* =========================================================
+   MENSAJE DE INVITADO
+   ========================================================= */
+
+.mensaje-invitado {
+    width: min(650px, 90%);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 22px;
+
+    border: 2px solid rgba(148, 223, 102, 0.55);
+
+    border-radius: 25px;
+
+    background: rgba(28, 36, 24, 0.90);
+
+    color: #ffffff;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.20);
+}
+
+.mensaje-invitado > span {
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 15px;
+
+    background: #789561;
+
+    font-size: 24px;
+}
+
+.mensaje-invitado p {
+    color: #ffffff;
+
+    font-family:
+        "Sweet Apricot",
+        "Segoe Print",
+        "Comic Sans MS",
+        cursive;
+
+    font-size: 16px;
+
+    font-style: italic;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   OPCIONES PRINCIPALES
+   ========================================================= */
+
+.opcion-principal {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.15s ease;
+}
+
+
+/* =========================================================
+   OPCIONES SECUNDARIAS
+   ========================================================= */
+
+.opcion-secundaria {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 15px;
+
+    margin-bottom: 10px;
+
+    border: 2px solid rgba(255, 255, 255, 0.35);
+
+    border-radius: 20px;
+
+    background: rgba(28, 36, 24, 0.65);
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.15s ease;
+}
+
+.opcion-secundaria:hover {
+    background: rgba(28, 36, 24, 0.85);
+
+    border-color: #94df66;
+
+    transform: translateY(-2px);
+}
+
+.opcion-secundaria span:nth-child(2) {
+    flex: 1;
+
+    font-weight: bold;
+}
+
+.opcion-secundaria span:first-child {
+    font-size: 19px;
+}
+
+.opcion-secundaria span:last-child {
+    color: #94df66;
+
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   BARRA INFERIOR
+   ========================================================= */
+
+.perfil-barra-inferior {
+    width: 100%;
+
+    display: flex;
+
+    background: #1c2418;
+
+    color: #ffffff;
+}
+
+.barra-opcion {
+    flex: 1;
+
+    min-height: 75px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    font-family:
+        "Sweet Apricot",
+        "Segoe Print",
+        "Comic Sans MS",
+        cursive;
+
+    font-size: 17px;
+
+    font-style: italic;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.barra-opcion + .barra-opcion {
+    border-left: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.barra-opcion:hover {
+    background: #315c3b;
+
+    color: #94df66;
+}
+
+
+/* =========================================================
+   CERRAR SESIÓN
+   ========================================================= */
+
+.barra-opcion.cerrar-sesion {
+    color: #ffffff;
+}
+
+.barra-opcion.cerrar-sesion:hover {
+    background: #315c3b;
+
+    color: #94df66;
+}
+
+
+/* =========================================================
+   ELEMENTOS OCULTOS
+   ========================================================= */
+
+.oculto {
+    display: none !important;
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .perfil-contenedor {
+        padding:
+            40px 18px 55px;
+    }
+
+    .perfil-tarjeta {
+        width: 95vw;
+    }
+
+    .perfil-contenido {
+        padding:
+            45px 35px;
+    }
+
+    .catalogo-plantas {
+        gap: 16px;
+    }
+
+    .boton-registrar-planta {
+        width: 90%;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - MÓVIL
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+    .perfil-contenedor {
+        padding:
+            25px 12px 45px;
+    }
+
+    .perfil-tarjeta {
+        width: 96vw;
+
+        border-radius: 28px;
+    }
+
+    .perfil-header {
+        padding:
+            18px;
+
+        gap: 12px;
+
+        flex-wrap: wrap;
+    }
+
+    .perfil-icono {
+        width: 52px;
+        height: 52px;
+
+        font-size: 24px;
+    }
+
+    .perfil-header h1 {
+        font-size: 21px;
+    }
+
+    .perfil-header p {
+        font-size: 14px;
+    }
+
+    .btn-usar-offline {
+        width: 100%;
+
+        margin-top: 5px;
+    }
+
+    .botones-invitado {
+        flex-wrap: wrap;
+    }
+
+    .perfil-contenido {
+        min-height: 480px;
+
+        padding:
+            35px 18px;
+    }
+
+    .boton-registrar-planta {
+        width: 100%;
+
+        min-height: 135px;
+
+        padding:
+            25px 20px;
+
+        gap: 12px;
+
+        border-radius: 28px;
+    }
+
+    .boton-registrar-planta .opcion-texto strong {
+        font-size: 19px;
+    }
+
+    .boton-registrar-planta .opcion-texto small {
+        font-size: 14px;
+    }
+
+    .boton-registrar-planta .opcion-flecha {
+        font-size: 30px;
+    }
+
+    .titulo-plantas h2 {
+        font-size: 25px;
+    }
+
+    .titulo-plantas p {
+        font-size: 15px;
+    }
+
+    .catalogo-plantas {
+        grid-template-columns: 1fr;
+    }
+
+    .tarjeta-planta-foto {
+        width: calc(100% - 16px);
+        height: 145px;
+        margin: 8px 8px 0;
+    }
+
+    #btn-mi-planta {
+        min-height: 82px;
+
+        padding:
+            14px 17px;
+
+        border-radius: 22px;
+    }
+
+    #btn-mi-planta .opcion-icono {
+        width: 48px;
+        height: 48px;
+
+        font-size: 25px;
+    }
+
+    #btn-mi-planta .opcion-texto strong {
+        font-size: 17px;
+    }
+
+    #btn-mi-planta .opcion-texto small {
+        font-size: 13px;
+    }
+
+    #btn-mi-planta .opcion-flecha {
+        width: 34px;
+        height: 34px;
+
+        font-size: 18px;
+    }
+
+    .mensaje-invitado {
+        width: 100%;
+
+        padding: 18px;
+    }
+
+    .mensaje-invitado p {
+        font-size: 14px;
+    }
+
+    .btn-seleccionar-planta {
+        font-size: 11px;
+        padding: 8px 10px;
+    }
+
+    .btn-eliminar-planta {
+        width: 38px;
+        height: 34px;
+    }
+
+    .btn-eliminar-planta::before {
+        font-size: 16px;
+    }
+
+    .barra-opcion {
+        min-height: 65px;
+
+        font-size: 14px;
+    }
+}
+
+
+/* =========================================================
+   MÓVILES PEQUEÑOS
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    .perfil-header {
+        align-items: flex-start;
+    }
+
+    .perfil-identidad {
+        width: calc(100% - 70px);
+    }
+
+    .perfil-header h1 {
+        font-size: 19px;
+    }
+
+    .perfil-header p {
+        font-size: 12px;
+    }
+
+    .botones-invitado {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .perfil-contenido {
+        padding:
+            30px 13px;
+    }
+
+    .boton-registrar-planta {
+        min-height: 125px;
+
+        padding:
+            20px 15px;
+    }
+
+    .boton-registrar-planta .opcion-texto strong {
+        font-size: 17px;
+    }
+
+    .boton-registrar-planta .opcion-texto small {
+        font-size: 12px;
+    }
+
+    .boton-registrar-planta .opcion-flecha {
+        font-size: 25px;
+    }
+
+    .titulo-plantas h2 {
+        font-size: 22px;
+    }
+
+    .titulo-plantas p {
+        font-size: 13px;
+    }
+
+    .tarjeta-planta-informacion {
+        padding: 8px 12px 12px;
+    }
+
+    .barra-opcion {
+        min-height: 60px;
+
+        font-size: 12px;
+    }
+}

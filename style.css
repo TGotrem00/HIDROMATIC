@@ -1,0 +1,240 @@
+/* ============================================================
+   HIDROMATIC - MEDIDOR DE HUMEDAD
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   CONTENEDOR DEL MEDIDOR
+   ------------------------------------------------------------ */
+
+.box {
+    height: 280px;
+    width: 280px;
+
+    position: relative;
+
+    margin: 30px auto;
+
+    background: #020438;
+
+    border-radius: 100%;
+
+    overflow: hidden;
+}
+
+
+/* ------------------------------------------------------------
+   PORCENTAJE
+   ------------------------------------------------------------ */
+
+.box .percent {
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    z-index: 3;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #fff;
+
+    font-size: 64px;
+
+}
+
+
+/* Número del porcentaje */
+
+.box .percentNum {
+
+    font-size: 64px;
+
+}
+
+
+/* Símbolo % */
+
+.box .percentB {
+
+    font-size: 40px;
+
+    margin-left: 5px;
+
+}
+
+
+/* ------------------------------------------------------------
+   AGUA
+   ------------------------------------------------------------ */
+
+.box .water {
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    z-index: 2;
+
+    width: 100%;
+    height: 100%;
+
+    /*
+        IMPORTANTE:
+
+        Este valor será modificado posteriormente
+        mediante JavaScript.
+
+        100% = medidor vacío
+
+        0% = medidor completamente lleno
+    */
+
+    transform: translate(0, 100%);
+
+    background: #4D6DE3;
+
+    transition: transform 0.5s ease;
+
+}
+
+
+/* ------------------------------------------------------------
+   ONDAS
+   ------------------------------------------------------------ */
+
+.box .water .water_wave {
+
+    width: 200%;
+
+    position: absolute;
+
+    bottom: 100%;
+
+}
+
+
+/* Onda trasera */
+
+.box .water .water_wave_back {
+
+    right: 0;
+
+    fill: #C7EEFF;
+
+    animation:
+        wave-back 1.4s infinite linear;
+
+}
+
+
+/* Onda delantera */
+
+.box .water .water_wave_front {
+
+    left: 0;
+
+    fill: #4D6DE3;
+
+    margin-bottom: -1px;
+
+    animation:
+        wave-front 0.7s infinite linear;
+
+}
+
+
+/* ------------------------------------------------------------
+   ANIMACIÓN DE LAS ONDAS
+   ------------------------------------------------------------ */
+
+@keyframes wave-front {
+
+    100% {
+
+        transform:
+            translate(-50%, 0);
+
+    }
+
+}
+
+
+@keyframes wave-back {
+
+    100% {
+
+        transform:
+            translate(50%, 0);
+
+    }
+
+}
+
+
+/* ------------------------------------------------------------
+   INFORMACIÓN DEL SENSOR
+   ------------------------------------------------------------ */
+
+.informacion-humedad {
+
+    text-align: center;
+
+    margin-bottom: 15px;
+
+}
+
+
+.informacion-humedad p {
+
+    margin: 5px 0;
+
+}
+
+
+/* ------------------------------------------------------------
+   ESTADO DEL SENSOR
+   ------------------------------------------------------------ */
+
+.estado-humedad {
+
+    text-align: center;
+
+    margin: 15px auto;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+}
+
+
+/* ------------------------------------------------------------
+   CONFIGURACIÓN DEL MODO DETECCIÓN
+   ------------------------------------------------------------ */
+
+.configuracion-deteccion {
+
+    text-align: center;
+
+    margin-top: 20px;
+
+}
+
+
+/* ------------------------------------------------------------
+   ELEMENTOS DEL SVG
+   ------------------------------------------------------------ */
+
+.box svg {
+
+    display: block;
+
+}

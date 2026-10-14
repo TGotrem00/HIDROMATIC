@@ -1,0 +1,818 @@
+/* ============================================================
+   HIDROMATIC - COMPORTAMIENTO DE LA PLANTA
+   Rediseño visual coherente con Modo Manual, Programado y Detección.
+   El JavaScript y los identificadores del HTML se mantienen intactos.
+   ============================================================ */
+
+:root {
+    --verde-lima: #94df66;
+    --verde-tarjeta: #789561;
+    --verde-oscuro: #1f2b1c;
+    --verde-profundo: #263b24;
+    --verde-claro: #dcebd2;
+    --blanco: #ffffff;
+    --texto: #26332a;
+    --texto-suave: #5e6e59;
+    --borde: rgba(31, 43, 28, 0.16);
+    --sombra: 0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    min-height: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    position: relative;
+    isolation: isolate;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--texto);
+
+    /* CAMBIA ESTA RUTA POR LA UBICACIÓN DE TU IMAGEN DE FONDO */
+    background-image: url("Assets/fondo de hojas2.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: rgba(9, 27, 9, 0.42);
+    pointer-events: none;
+}
+
+button {
+    font: inherit;
+}
+
+button:focus-visible {
+    outline: 3px solid var(--verde-lima);
+    outline-offset: 3px;
+}
+
+/* ============================================================
+   CONTENEDOR PRINCIPAL
+   ============================================================ */
+
+.comportamiento-contenedor {
+    width: 100%;
+    min-height: 100vh;
+    padding: 34px 22px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.comportamiento-tarjeta {
+    width: min(1120px, 100%);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 30px;
+    background: rgba(235, 242, 226, 0.94);
+    box-shadow: var(--sombra);
+    backdrop-filter: blur(7px);
+}
+
+/* ============================================================
+   ENCABEZADO Y BOTÓN VOLVER
+   ============================================================ */
+
+.comportamiento-header {
+    width: 100%;
+    padding: 24px 30px 0;
+    background: transparent;
+}
+
+.btn-volver {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 28px;
+    background: var(--verde-oscuro);
+    color: var(--blanco);
+    font-family: "Sweet Apricot", "Segoe Print", "Comic Sans MS", cursive;
+    font-size: 17px;
+    letter-spacing: 0.4px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.14);
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-volver:hover {
+    background: var(--verde-lima);
+    color: var(--verde-oscuro);
+    transform: translateY(-2px);
+}
+
+/* ============================================================
+   IDENTIDAD DE LA PLANTA
+   ============================================================ */
+
+.titulo-planta {
+    width: 100%;
+    margin-top: 22px;
+    padding: 25px 28px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-radius: 25px;
+    background: var(--verde-tarjeta);
+    box-shadow: 0 8px 18px rgba(31, 43, 28, 0.16);
+}
+
+.icono-planta {
+    width: 76px;
+    height: 76px;
+    flex: 0 0 76px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 22px;
+    background: var(--verde-claro);
+    font-size: 39px;
+    box-shadow: inset 0 0 0 1px rgba(31, 43, 28, 0.08);
+}
+
+.titulo-planta h1 {
+    color: var(--verde-lima);
+    font-family: "Garet", Arial, Helvetica, sans-serif;
+    font-size: clamp(25px, 3vw, 38px);
+    font-weight: 900;
+    line-height: 1.18;
+    overflow-wrap: anywhere;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 7px rgba(0, 0, 0, 0.12);
+}
+
+.titulo-planta p {
+    margin-top: 8px;
+    color: #ffffff;
+    font-family: "Sweet Apricot", "Segoe Print", "Comic Sans MS", cursive;
+    font-size: 19px;
+    line-height: 1.35;
+}
+
+/* ============================================================
+   DATOS PRINCIPALES
+   ============================================================ */
+
+.informacion-general {
+    width: 100%;
+    padding: 26px 30px 22px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.tarjeta-dato {
+    min-width: 0;
+    min-height: 125px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border: 1px solid rgba(31, 43, 28, 0.12);
+    border-radius: 22px;
+    background: #f7faef;
+    box-shadow: 0 5px 13px rgba(31, 43, 28, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tarjeta-dato:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 9px 18px rgba(31, 43, 28, 0.13);
+}
+
+.dato-icono {
+    width: 56px;
+    height: 56px;
+    flex: 0 0 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 17px;
+    background: #dcebd2;
+    font-size: 27px;
+}
+
+.dato-contenido {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.dato-valor {
+    color: var(--verde-profundo);
+    font-family: "Garet", Arial, Helvetica, sans-serif;
+    font-size: clamp(21px, 2.3vw, 29px);
+    font-weight: 900;
+    overflow-wrap: anywhere;
+}
+
+.dato-titulo {
+    color: var(--texto-suave);
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+/* ============================================================
+   ESTADO DE LA PLANTA
+   ============================================================ */
+
+.estado-planta {
+    min-height: 95px;
+    margin: 0 30px 26px;
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    border: 1px solid rgba(31, 43, 28, 0.13);
+    border-radius: 22px;
+    background: #dcebd2;
+}
+
+.estado-icono {
+    width: 56px;
+    height: 56px;
+    flex: 0 0 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #f7faef;
+    font-size: 28px;
+}
+
+.estado-contenido h2 {
+    color: var(--verde-oscuro);
+    font-family: "Garet", Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.estado-contenido p {
+    margin-top: 6px;
+    color: #43543e;
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+/* ============================================================
+   SECCIONES DE HISTORIAL
+   ============================================================ */
+
+.seccion-historial,
+.seccion-riego {
+    width: 100%;
+    padding: 28px 30px 32px;
+    border-top: 1px solid rgba(31, 43, 28, 0.13);
+}
+
+.titulo-seccion {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 22px;
+}
+
+.titulo-icono {
+    width: 54px;
+    height: 54px;
+    flex: 0 0 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 17px;
+    background: var(--verde-tarjeta);
+    font-size: 26px;
+    box-shadow: 0 4px 10px rgba(31, 43, 28, 0.1);
+}
+
+.titulo-seccion h2 {
+    color: var(--verde-oscuro);
+    font-family: "Garet", Arial, Helvetica, sans-serif;
+    font-size: clamp(17px, 2vw, 22px);
+    font-weight: 900;
+    line-height: 1.25;
+    letter-spacing: 0.5px;
+}
+
+.titulo-seccion p {
+    margin-top: 6px;
+    color: var(--texto-suave);
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+/* ============================================================
+   FILTROS DIARIO / SEMANAL / MENSUAL
+   ============================================================ */
+
+.filtros-historial {
+    width: 100%;
+    margin-bottom: 17px;
+    padding: 6px;
+    display: flex;
+    gap: 7px;
+    border: 1px solid rgba(31, 43, 28, 0.12);
+    border-radius: 18px;
+    background: #dce7d3;
+}
+
+.filtro-historial,
+.filtro-riego {
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 42px;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 13px;
+    background: transparent;
+    color: #46583f;
+    font-family: "Sweet Apricot", "Segoe Print", "Comic Sans MS", cursive;
+    font-size: 16px;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.filtro-historial:hover,
+.filtro-riego:hover {
+    background: rgba(120, 149, 97, 0.25);
+    transform: translateY(-1px);
+}
+
+.filtro-historial.activo,
+.filtro-riego.activo {
+    background: var(--verde-oscuro);
+    color: #ffffff;
+    box-shadow: 0 4px 9px rgba(31, 43, 28, 0.18);
+}
+
+/* ============================================================
+   GRÁFICAS
+   Se conservan los contenedores para el canvas creado por JS.
+   ============================================================ */
+
+.grafica-contenedor {
+    width: 100%;
+    min-width: 0;
+}
+
+.grafica {
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px solid rgba(31, 43, 28, 0.15);
+    border-radius: 22px;
+    background: #f7faef;
+    box-shadow: inset 0 2px 8px rgba(31, 43, 28, 0.04);
+}
+
+.grafica::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(
+        to bottom,
+        transparent 24.5%,
+        rgba(120, 149, 97, 0.18) 25%,
+        transparent 25.5%,
+        transparent 49.5%,
+        rgba(120, 149, 97, 0.18) 50%,
+        transparent 50.5%,
+        transparent 74.5%,
+        rgba(120, 149, 97, 0.18) 75%,
+        transparent 75.5%
+    );
+    pointer-events: none;
+}
+
+.grafica canvas {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: block;
+}
+
+.grafica-mensaje {
+    position: relative;
+    z-index: 2;
+    max-width: 320px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.grafica-mensaje span {
+    margin-bottom: 12px;
+    font-size: 38px;
+}
+
+.grafica-mensaje p {
+    color: var(--texto-suave);
+    font-size: 14px;
+    line-height: 1.55;
+}
+
+/* ============================================================
+   ACTIVIDAD DE RIEGO
+   ============================================================ */
+
+.estadisticas-riego {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.estadistica {
+    min-width: 0;
+    min-height: 105px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border: 1px solid rgba(31, 43, 28, 0.12);
+    border-radius: 22px;
+    background: #f7faef;
+    box-shadow: 0 5px 13px rgba(31, 43, 28, 0.07);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.estadistica:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 9px 18px rgba(31, 43, 28, 0.12);
+}
+
+.estadistica-icono {
+    width: 54px;
+    height: 54px;
+    flex: 0 0 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 17px;
+    background: #dcebd2;
+    font-size: 26px;
+}
+
+.estadistica > div {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.estadistica-valor {
+    color: var(--verde-profundo);
+    font-family: "Garet", Arial, Helvetica, sans-serif;
+    font-size: clamp(21px, 2vw, 27px);
+    font-weight: 900;
+    overflow-wrap: anywhere;
+}
+
+.estadistica-titulo {
+    color: var(--texto-suave);
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+/* ============================================================
+   SUBSECCIÓN HISTORIAL DE RIEGOS
+   ============================================================ */
+
+.historial-riegos {
+    margin-top: 30px;
+    padding-top: 27px;
+    border-top: 1px solid rgba(31, 43, 28, 0.15);
+}
+
+.subtitulo-historial {
+    margin-bottom: 17px;
+}
+
+.subtitulo-historial h3 {
+    color: var(--verde-oscuro);
+    font-family: "Garet", Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    font-weight: 900;
+    letter-spacing: 0.4px;
+}
+
+.subtitulo-historial p {
+    margin-top: 6px;
+    color: var(--texto-suave);
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+/* ============================================================
+   MENSAJES Y ESTADO OCULTO
+   ============================================================ */
+
+.mensaje-comportamiento {
+    margin: 0 30px 30px;
+    padding: 17px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid rgba(31, 43, 28, 0.14);
+    border-radius: 18px;
+    background: #dcebd2;
+    color: #43543e;
+    font-size: 14px;
+    line-height: 1.55;
+}
+
+.mensaje-comportamiento > span {
+    flex: 0 0 auto;
+    font-size: 22px;
+}
+
+.oculto {
+    display: none !important;
+}
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 900px) {
+    .comportamiento-contenedor {
+        padding: 24px 16px 36px;
+    }
+
+    .comportamiento-header {
+        padding: 22px 22px 0;
+    }
+
+    .titulo-planta {
+        padding: 22px;
+    }
+
+    .informacion-general {
+        padding: 22px;
+        gap: 12px;
+    }
+
+    .tarjeta-dato {
+        padding: 16px;
+        gap: 12px;
+    }
+
+    .dato-icono {
+        width: 48px;
+        height: 48px;
+        flex-basis: 48px;
+        font-size: 23px;
+    }
+
+    .seccion-historial,
+    .seccion-riego {
+        padding: 25px 22px 28px;
+    }
+
+    .estado-planta {
+        margin-right: 22px;
+        margin-left: 22px;
+    }
+
+    .mensaje-comportamiento {
+        margin-right: 22px;
+        margin-left: 22px;
+    }
+}
+
+/* ============================================================
+   MÓVILES
+   ============================================================ */
+
+@media (max-width: 650px) {
+    body {
+        background-attachment: scroll;
+    }
+
+    .comportamiento-contenedor {
+        padding: 13px 10px 24px;
+    }
+
+    .comportamiento-tarjeta {
+        border-radius: 22px;
+    }
+
+    .comportamiento-header {
+        padding: 17px 16px 0;
+    }
+
+    .btn-volver {
+        min-height: 40px;
+        padding: 9px 15px;
+        font-size: 15px;
+    }
+
+    .titulo-planta {
+        margin-top: 16px;
+        padding: 18px 16px;
+        gap: 13px;
+        border-radius: 19px;
+    }
+
+    .icono-planta {
+        width: 55px;
+        height: 55px;
+        flex-basis: 55px;
+        border-radius: 16px;
+        font-size: 29px;
+    }
+
+    .titulo-planta h1 {
+        font-size: clamp(19px, 5vw, 27px);
+        letter-spacing: 0.4px;
+    }
+
+    .titulo-planta p {
+        margin-top: 5px;
+        font-size: 16px;
+    }
+
+    .informacion-general {
+        grid-template-columns: 1fr;
+        padding: 17px 16px;
+        gap: 11px;
+    }
+
+    .tarjeta-dato {
+        min-height: 86px;
+        padding: 14px 16px;
+        border-radius: 17px;
+    }
+
+    .dato-valor {
+        font-size: 23px;
+    }
+
+    .estado-planta {
+        min-height: 0;
+        margin: 0 16px 18px;
+        padding: 14px;
+        gap: 12px;
+        border-radius: 17px;
+    }
+
+    .estado-icono {
+        width: 46px;
+        height: 46px;
+        flex-basis: 46px;
+        font-size: 23px;
+    }
+
+    .estado-contenido h2 {
+        font-size: 14px;
+    }
+
+    .estado-contenido p {
+        font-size: 13px;
+    }
+
+    .seccion-historial,
+    .seccion-riego {
+        padding: 22px 16px 24px;
+    }
+
+    .titulo-seccion {
+        gap: 12px;
+        margin-bottom: 17px;
+    }
+
+    .titulo-icono {
+        width: 45px;
+        height: 45px;
+        flex-basis: 45px;
+        border-radius: 14px;
+        font-size: 22px;
+    }
+
+    .titulo-seccion h2 {
+        font-size: 16px;
+    }
+
+    .titulo-seccion p,
+    .subtitulo-historial p {
+        font-size: 12px;
+    }
+
+    .filtros-historial {
+        padding: 4px;
+        gap: 3px;
+        border-radius: 14px;
+    }
+
+    .filtro-historial,
+    .filtro-riego {
+        min-height: 38px;
+        padding: 8px 4px;
+        border-radius: 10px;
+        font-size: 13px;
+    }
+
+    .grafica {
+        height: 260px;
+        border-radius: 17px;
+    }
+
+    .estadisticas-riego {
+        grid-template-columns: 1fr;
+        gap: 11px;
+    }
+
+    .estadistica {
+        min-height: 86px;
+        padding: 15px;
+        border-radius: 17px;
+    }
+
+    .estadistica-icono {
+        width: 46px;
+        height: 46px;
+        flex-basis: 46px;
+        border-radius: 14px;
+        font-size: 22px;
+    }
+
+    .historial-riegos {
+        margin-top: 23px;
+        padding-top: 22px;
+    }
+
+    .subtitulo-historial h3 {
+        font-size: 15px;
+    }
+
+    .mensaje-comportamiento {
+        margin: 0 16px 18px;
+        padding: 14px;
+        border-radius: 15px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 380px) {
+    .comportamiento-contenedor {
+        padding-right: 7px;
+        padding-left: 7px;
+    }
+
+    .comportamiento-header {
+        padding-right: 12px;
+        padding-left: 12px;
+    }
+
+    .titulo-planta {
+        padding: 15px 12px;
+    }
+
+    .icono-planta {
+        width: 48px;
+        height: 48px;
+        flex-basis: 48px;
+        font-size: 25px;
+    }
+
+    .filtro-historial,
+    .filtro-riego {
+        font-size: 11px;
+    }
+
+    .grafica {
+        height: 230px;
+    }
+}

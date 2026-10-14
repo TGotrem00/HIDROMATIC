@@ -1,0 +1,548 @@
+/* =========================
+   HIDROMA
+   ========================= */
+
+#hidroma-boton {
+    position: fixed;
+
+    bottom: 25px;
+    left: 25px;
+
+    width: 60px;
+    height: 60px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #315c3b;
+    color: white;
+
+    font-size: 26px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.18);
+
+    z-index: 9999;
+
+    transition:
+        transform 0.2s,
+        background 0.2s;
+}
+
+#hidroma-boton:hover {
+    transform: scale(1.08);
+    background: #264a2f;
+}
+
+#hidroma-boton:active {
+    transform: scale(0.95);
+}
+
+
+/* =========================
+   VENTANA PRINCIPAL
+   ========================= */
+
+#hidroma-ventana {
+
+    position: fixed;
+
+    left: 25px;
+    bottom: 100px;
+
+    width: 350px;
+    height: 500px;
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.20);
+
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform:
+        translateY(20px)
+        scale(0.95);
+
+    transition:
+        opacity 0.2s,
+        transform 0.2s,
+        visibility 0.2s;
+
+    z-index: 9998;
+}
+
+#hidroma-ventana.abierto {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* =========================
+   CABECERA
+   ========================= */
+
+#hidroma-cabecera {
+
+    height: 65px;
+
+    min-height: 65px;
+
+    display: flex;
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 18px;
+
+    background: #315c3b;
+
+    color: white;
+}
+
+#hidroma-nombre {
+
+    margin: 0;
+
+    font-size: 18px;
+}
+
+#hidroma-subtitulo {
+
+    margin: 3px 0 0;
+
+    font-size: 12px;
+
+    opacity: 0.8;
+}
+
+#hidroma-cerrar {
+
+    border: none;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 22px;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   NAVEGACIÓN
+   ========================= */
+
+#hidroma-navegacion {
+
+    display: flex;
+
+    width: 100%;
+
+    border-bottom: 1px solid #e0e6e1;
+
+    background: #ffffff;
+}
+
+#hidroma-navegacion button {
+
+    flex: 1;
+
+    padding: 12px 8px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #657268;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s,
+        color 0.2s;
+}
+
+#hidroma-navegacion button:hover {
+
+    background: #f4f7f2;
+}
+
+#hidroma-navegacion
+.hidroma-nav-activo {
+
+    color: #315c3b;
+
+    font-weight: bold;
+
+    border-bottom: 2px solid #315c3b;
+}
+
+
+/* =========================
+   CHAT
+   ========================= */
+
+#hidroma-chat {
+
+    flex: 1;
+
+    min-height: 0;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+#hidroma-mensajes {
+
+    flex: 1;
+
+    min-height: 0;
+
+    padding: 18px;
+
+    overflow-y: auto;
+
+    background: #f4f7f2;
+}
+
+.hidroma-mensaje {
+
+    max-width: 85%;
+
+    padding: 11px 14px;
+
+    margin-bottom: 12px;
+
+    border-radius: 12px;
+
+    font-size: 14px;
+
+    line-height: 1.4;
+
+    word-wrap: break-word;
+}
+
+.hidroma-mensaje.bot {
+
+    margin-right: auto;
+
+    background: white;
+
+    color: #1f2d24;
+}
+
+.hidroma-mensaje.usuario {
+
+    margin-left: auto;
+
+    background: #315c3b;
+
+    color: white;
+}
+
+
+/* =========================
+   FORMULARIO
+   ========================= */
+
+#hidroma-form {
+
+    display: flex;
+
+    gap: 8px;
+
+    padding: 12px;
+
+    background: white;
+
+    border-top: 1px solid #e0e6e1;
+}
+
+#hidroma-input {
+
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 11px 13px;
+
+    border: 1px solid #dce4dc;
+
+    border-radius: 10px;
+
+    background: #f9fbf8;
+
+    color: #1f2d24;
+
+    font-size: 14px;
+}
+
+#hidroma-input:focus {
+
+    outline: none;
+
+    border-color: #315c3b;
+
+    background: white;
+}
+
+#hidroma-enviar {
+
+    width: 45px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #315c3b;
+
+    color: white;
+
+    font-size: 18px;
+
+    cursor: pointer;
+}
+
+#hidroma-enviar:hover {
+
+    background: #264a2f;
+}
+
+
+/* =========================
+   ARCHIVO
+   ========================= */
+
+#hidroma-archivo {
+
+    display: none;
+
+    flex: 1;
+
+    min-height: 0;
+
+    flex-direction: column;
+
+    background: #f4f7f2;
+}
+
+
+/* Cabecera del archivo */
+
+#hidroma-archivo-cabecera {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 12px 15px;
+
+    background: white;
+
+    border-bottom: 1px solid #e0e6e1;
+}
+
+#hidroma-archivo-cabecera button {
+
+    width: 32px;
+    height: 32px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #f4f7f2;
+
+    color: #315c3b;
+
+    font-size: 18px;
+
+    cursor: pointer;
+}
+
+#hidroma-archivo-cabecera button:hover {
+
+    background: #e5ece5;
+}
+
+#hidroma-archivo-cabecera h3 {
+
+    margin: 0;
+
+    font-size: 15px;
+
+    color: #1f2d24;
+}
+
+
+/* Lista */
+
+#hidroma-lista-conversaciones {
+
+    flex: 1;
+
+    min-height: 0;
+
+    padding: 15px;
+
+    overflow-y: auto;
+}
+
+
+/* Títulos de sección */
+
+.hidroma-archivo-titulo {
+
+    margin: 8px 5px 10px;
+
+    color: #657268;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    text-transform: uppercase;
+}
+
+
+/* Conversación */
+
+.hidroma-conversacion {
+
+    width: 100%;
+
+    padding: 13px 14px;
+
+    margin-bottom: 8px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: white;
+
+    color: #1f2d24;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s,
+        transform 0.1s;
+}
+
+.hidroma-conversacion:hover {
+
+    background: #eaf0ea;
+}
+
+.hidroma-conversacion:active {
+
+    transform: scale(0.98);
+}
+
+
+/* Fecha */
+
+.hidroma-conversacion-fecha {
+
+    display: block;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    color: #315c3b;
+}
+
+
+/* Vista previa */
+
+.hidroma-conversacion-preview {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color: #657268;
+
+    font-size: 12px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* =========================
+   SIN CONVERSACIONES
+   ========================= */
+
+.hidroma-archivo-vacio {
+
+    padding: 30px 15px;
+
+    text-align: center;
+
+    color: #657268;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   CELULARES
+   ========================= */
+
+@media (max-width: 600px) {
+
+    #hidroma-boton {
+
+        bottom: 18px;
+        left: 18px;
+
+        width: 55px;
+        height: 55px;
+    }
+
+    #hidroma-ventana {
+
+        left: 10px;
+        right: 10px;
+
+        bottom: 85px;
+
+        width: auto;
+
+        height: 70vh;
+
+        max-height: 500px;
+    }
+
+}

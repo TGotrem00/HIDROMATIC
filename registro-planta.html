@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HIDROMATIC - Registrar planta</title>
+
+    <link rel="stylesheet" href="registro-planta.css">
+</head>
+
+<body>
+
+    <main class="registro-planta-contenedor">
+
+        <section class="registro-planta-tarjeta">
+
+            <!-- =========================
+                 BARRA SUPERIOR
+                 ========================= -->
+
+            <header class="registro-planta-header">
+
+                <button
+                    type="button"
+                    id="btn-volver-perfil"
+                    class="btn-volver"
+                >
+                    ←
+                </button>
+
+                <div>
+                    <h1>🌱 HIDROMATIC</h1>
+
+                    <p>
+                        Registrar una planta
+                    </p>
+                </div>
+
+            </header>
+
+
+            <!-- =========================
+                 CONTENIDO
+                 ========================= -->
+
+            <div class="registro-planta-contenido">
+
+                <h2>
+                    Registra tu planta
+                </h2>
+
+                <p class="descripcion">
+                    Guarda la información de tu planta para personalizar
+                    el funcionamiento de HIDROMATIC.
+                </p>
+
+
+                <form id="form-registro-planta">
+
+
+                    <!-- =========================
+                         FOTO
+                         ========================= -->
+
+                    <div class="seccion-foto">
+
+                        <label>
+                            Foto de tu planta
+                        </label>
+
+                        <div
+                            id="foto-contenedor"
+                            class="foto-contenedor"
+                        >
+
+                            <div
+                                id="foto-placeholder"
+                                class="foto-placeholder"
+                            >
+
+                                <span class="foto-icono">
+                                    📷
+                                </span>
+
+                                <strong>
+                                    Añade una foto
+                                </strong>
+
+                                <small>
+                                    Toma una foto o selecciona una imagen
+                                </small>
+
+                            </div>
+
+
+                            <img
+                                id="vista-previa"
+                                class="vista-previa"
+                                alt="Vista previa de la planta"
+                            >
+
+                        </div>
+
+
+                        <div class="foto-botones">
+
+                            <label
+                                for="foto-camara"
+                                class="btn-foto"
+                            >
+                                📷 Tomar foto
+                            </label>
+
+                            <input
+                                type="file"
+                                id="foto-camara"
+                                accept="image/*"
+                                capture="environment"
+                            >
+
+
+                            <label
+                                for="foto-archivo"
+                                class="btn-foto"
+                            >
+                                🖼️ Subir imagen
+                            </label>
+
+                            <input
+                                type="file"
+                                id="foto-archivo"
+                                accept="image/*"
+                            >
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            id="btn-quitar-foto"
+                            class="btn-quitar-foto"
+                        >
+                            Quitar foto
+                        </button>
+
+                    </div>
+
+
+                    <!-- =========================
+                         NOMBRE
+                         ========================= -->
+
+                    <div class="campo">
+
+                        <label for="nombre-planta">
+                            Nombre de la planta
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nombre-planta"
+                            name="nombre-planta"
+                            placeholder="Ejemplo: Mi Monstera"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- =========================
+                         TIPO
+                         ========================= -->
+
+                    <div class="campo">
+
+                        <label for="tipo-planta">
+                            Tipo de planta
+                        </label>
+
+                        <select
+                            id="tipo-planta"
+                            name="tipo-planta"
+                            required
+                        >
+
+                            <option value="">
+                                Selecciona una opción
+                            </option>
+
+                            <option value="Monstera">
+                                Monstera
+                            </option>
+
+                            <option value="Pothos">
+                                Pothos
+                            </option>
+
+                            <option value="Sansevieria">
+                                Sansevieria
+                            </option>
+
+                            <option value="Suculenta">
+                                Suculenta
+                            </option>
+
+                            <option value="Cactus">
+                                Cactus
+                            </option>
+
+                            <option value="Helecho">
+                                Helecho
+                            </option>
+
+                            <option value="Palmera">
+                                Palmera
+                            </option>
+
+                            <option value="Otra">
+                                Otra
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- =========================
+                         HUMEDAD
+                         ========================= -->
+
+                    <div class="fila-campos">
+
+                        <div class="campo">
+
+                            <label for="humedad-minima">
+                                Humedad mínima
+                            </label>
+
+                            <div class="campo-unidad">
+
+                                <input
+                                    type="number"
+                                    id="humedad-minima"
+                                    name="humedad-minima"
+                                    min="0"
+                                    max="100"
+                                    value="40"
+                                    required
+                                >
+
+                                <span>%</span>
+
+                            </div>
+
+                            <small class="ayuda">
+                                HIDROMATIC regará cuando baje de este nivel.
+                            </small>
+
+                        </div>
+
+
+                        <!-- =========================
+                             TIEMPO
+                             ========================= -->
+
+                        <div class="campo">
+
+                            <label for="tiempo-riego">
+                                Tiempo de riego
+                            </label>
+
+                            <div class="campo-unidad">
+
+                                <input
+                                    type="number"
+                                    id="tiempo-riego"
+                                    name="tiempo-riego"
+                                    min="1"
+                                    max="10"
+                                    value="5"
+                                    required
+                                >
+
+                                <span>seg</span>
+
+                            </div>
+
+                            <small class="ayuda">
+                                Máximo permitido: 10 segundos.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =========================
+                         ERROR
+                         ========================= -->
+
+                    <p
+                        id="mensaje-error"
+                        class="mensaje-error"
+                    ></p>
+
+
+                    <!-- =========================
+                         REGISTRAR
+                         ========================= -->
+
+                    <button
+                        type="submit"
+                        id="btn-registrar-planta"
+                    >
+                        REGISTRAR PLANTA
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- =========================
+                 BARRA INFERIOR
+                 ========================= -->
+
+            <footer class="registro-planta-footer">
+
+                <button
+                    type="button"
+                    id="btn-footer-volver"
+                >
+                    ← Volver al perfil
+                </button>
+
+            </footer>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         JAVASCRIPT
+         ========================= -->
+
+    <script src="registro-planta.js"></script>
+
+</body>
+
+</html>

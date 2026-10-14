@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>HIDROMATIC - Registro</title>
+
+<link rel="stylesheet" href="registro.css">
+
+
+</head>
+
+<body>
+
+<main class="registro-contenedor">
+
+    <section class="registro-tarjeta">
+
+        <h1>
+            HIDROMATIC
+        </h1>
+
+        <p class="registro-subtitulo">
+            Regístrate para comenzar a usar HIDROMATIC.
+        </p>
+
+
+        <!-- =========================
+             FORMULARIO
+             ========================= -->
+
+        <form id="form-registro">
+
+            <!-- NOMBRE -->
+
+            <div class="campo">
+
+                <label for="nombre">
+                    Nombre
+                </label>
+
+                <input
+                    type="text"
+                    id="nombre"
+                    name="nombre"
+                    placeholder="Tu nombre"
+                    required
+                >
+
+            </div>
+
+
+            <!-- CORREO -->
+
+            <div class="campo">
+
+                <label for="correo">
+                    Correo electrónico
+                </label>
+
+                <input
+                    type="email"
+                    id="correo"
+                    name="correo"
+                    placeholder="usuario@correo.com"
+                    required
+                >
+
+            </div>
+
+
+            <!-- CONTRASEÑA -->
+
+            <div class="campo">
+
+                <label for="contraseña">
+                    Contraseña
+                </label>
+
+                <div class="campo-contraseña">
+
+                    <input
+                        type="password"
+                        id="contraseña"
+                        name="contraseña"
+                        placeholder="Mínimo 6 caracteres"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        id="btn-mostrar-contraseña"
+                        aria-label="Mostrar contraseña"
+                    >
+                        👁️
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONFIRMAR CONTRASEÑA -->
+
+            <div class="campo">
+
+                <label for="confirmar-contraseña">
+                    Confirmar contraseña
+                </label>
+
+                <div class="campo-contraseña">
+
+                    <input
+                        type="password"
+                        id="confirmar-contraseña"
+                        name="confirmar-contraseña"
+                        placeholder="Repite tu contraseña"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        id="btn-mostrar-confirmacion"
+                        aria-label="Mostrar contraseña"
+                    >
+                        👁️
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- MENSAJE DE ERROR -->
+
+            <p
+                id="mensaje-error"
+                class="mensaje-error"
+            ></p>
+
+
+            <!-- REGISTRAR -->
+
+            <button
+                type="submit"
+                id="btn-registrar"
+            >
+                REGISTRARSE
+            </button>
+
+        </form>
+
+
+        <!-- =========================
+             MODO INVITADO
+             ========================= -->
+
+        <button
+            type="button"
+            id="btn-invitado"
+            class="btn-invitado"
+        >
+            MODO INVITADO
+        </button>
+
+
+        <!-- VOLVER AL LOGIN -->
+
+        <button
+            type="button"
+            id="btn-volver-login"
+            class="btn-volver"
+        >
+            Ya tengo una cuenta
+        </button>
+
+    </section>
+
+</main>
+
+
+<script src="registro.js"></script>
+
+
+</body>
+
+</html>
